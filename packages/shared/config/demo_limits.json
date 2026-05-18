@@ -1,0 +1,20 @@
+{
+  "facility_id": "demo-food-processing-plant",
+  "facility_name": "Demo Food Processing Plant",
+  "sample_interval_minutes": 5,
+  "prediction_horizons_minutes": [
+    15,
+    30,
+    60
+  ],
+  "amber_margin_pct": 15,
+  "limits": {
+    "ph_min": 6.0,
+    "ph_max": 10.0,
+    "temperature_max_c": 43.0,
+    "cod_max_mg_l": 1500,
+    "bod_max_mg_l": 900,
+    "tss_max_mg_l": 800,
+    "ammonia_max_mg_l": 180
+  }
+}
