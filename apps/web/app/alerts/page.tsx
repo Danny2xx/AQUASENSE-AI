@@ -39,11 +39,13 @@ function fmtTs(ts: string) {
 export default function AlertsPage() {
   const { connected, prediction } = useLiveData();
   const [alerts, setAlerts] = useState<Alert[]>([]);
+  const [totalAlerts, setTotalAlerts] = useState(0);
   const [loading, setLoading] = useState(true);
 
   async function load() {
-    const data = await fetchAlerts('demo-food-processing-plant', 100);
+    const { alerts: data = [], total = 0 } = await fetchAlerts('demo-food-processing-plant', 100);
     setAlerts(data);
+    setTotalAlerts(total);
     setLoading(false);
   }
 
@@ -62,7 +64,7 @@ export default function AlertsPage() {
   return (
     <>
       <Navigation connected={connected} />
-      <main className="pt-14 max-w-7xl mx-auto px-4 py-6">
+      <main className="mt-10 pt-14 max-w-7xl mx-auto px-4 py-6">
         <div className="mb-6 flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold text-slate-100 mb-1">Alert Centre</h1>
@@ -84,7 +86,7 @@ export default function AlertsPage() {
             <div className="text-xs text-slate-500 uppercase mt-1">Warnings Active</div>
           </div>
           <div className="card text-center">
-            <div className="text-3xl font-bold text-slate-300">{alerts.length}</div>
+            <div className="text-3xl font-bold text-slate-300">{totalAlerts}</div>
             <div className="text-xs text-slate-500 uppercase mt-1">Total Alerts</div>
           </div>
         </div>

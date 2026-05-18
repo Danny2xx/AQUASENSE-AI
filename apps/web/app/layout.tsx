@@ -8,7 +8,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark">
+      <head>
+        {/* Restore saved theme before first paint to avoid flash */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            try {
+              var t = localStorage.getItem('aquasense-theme');
+              if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+            } catch(e) {}
+          `
+        }} />
+      </head>
       <body className="min-h-screen bg-slate-900">
         {children}
       </body>

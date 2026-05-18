@@ -54,9 +54,13 @@ export function evaluateAndSaveAlert(prediction) {
 
 export function getAlerts(facilityId, limit = 50) {
   const db = getDb();
-  return db.prepare(
+  const alerts = db.prepare(
     'SELECT * FROM alerts WHERE facility_id = ? ORDER BY created_at DESC LIMIT ?'
   ).all(facilityId, limit);
+  const { total } = db.prepare(
+    'SELECT COUNT(*) as total FROM alerts WHERE facility_id = ?'
+  ).get(facilityId);
+  return { alerts, total };
 }
 
 export function getActiveAlerts(facilityId) {

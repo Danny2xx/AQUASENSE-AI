@@ -35,7 +35,7 @@ export default function DataQualityPage() {
   return (
     <>
       <Navigation connected={connected} />
-      <main className="pt-14 max-w-7xl mx-auto px-4 py-6">
+      <main className="mt-10 pt-14 max-w-7xl mx-auto px-4 py-6">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-slate-100 mb-1">Data Quality</h1>
           <p className="text-slate-400 text-sm">Sensor health, stream integrity, and anomaly detection status</p>

@@ -55,7 +55,7 @@ export default function DashboardPage() {
   return (
     <>
       <Navigation connected={connected} />
-      <main className="pt-14 max-w-7xl mx-auto px-4 py-6">
+      <main className="mt-10 pt-14 max-w-7xl mx-auto  px-4 py-6">
         {/* Header */}
         <div className={`card mb-6 border-2 ${statusBg[status] ?? statusBg.INITIALIZING}`}>
           <div className="flex items-center justify-between flex-wrap gap-4">

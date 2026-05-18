@@ -8,8 +8,12 @@ router.get('/', (req, res) => {
   const facilityId = req.query.facility_id || 'demo-food-processing-plant';
   const limit = Math.min(parseInt(req.query.limit) || 50, 200);
   const active = req.query.active === 'true';
-  const alerts = active ? getActiveAlerts(facilityId) : getAlerts(facilityId, limit);
-  res.json(alerts);
+  if (active) {
+    const alerts = getActiveAlerts(facilityId);
+    res.json({ alerts, total: alerts.length });
+  } else {
+    res.json(getAlerts(facilityId, limit));
+  }
 });
 
 // PATCH /api/alerts/:id/acknowledge

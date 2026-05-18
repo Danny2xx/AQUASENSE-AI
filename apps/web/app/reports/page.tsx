@@ -4,6 +4,7 @@ import { Navigation } from '../../components/Navigation';
 import { generateReport, fetchReports } from '../../lib/api';
 import { useEffect, useState } from 'react';
 
+
 interface Report {
   id: number;
   facility_id: string;
@@ -54,10 +55,45 @@ export default function ReportsPage() {
     }
   }
 
+  async function downloadPDF() {
+    if (!selected) return;
+    const { jsPDF } = await import('jspdf');
+    const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+    const pageH = doc.internal.pageSize.getHeight();
+    const margin = 15;
+    const lineH = 4.5;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.text('AquaSense AI – Compliance Report', margin, 15);
+
+    doc.setFont('courier', 'normal');
+    doc.setFontSize(9);
+    doc.text(`Report #${selected.id}  ·  Generated: ${fmtTs(selected.generated_at)}`, margin, 22);
+    doc.text(`Period: ${fmtTs(selected.start_time)} → ${fmtTs(selected.end_time)}`, margin, 27);
+
+    doc.setLineWidth(0.3);
+    doc.line(margin, 30, 195, 30);
+
+    doc.setFontSize(8);
+    const bodyLines = doc.splitTextToSize(selected.summary ?? '', 180);
+    let y = 36;
+    for (const line of bodyLines) {
+      if (y > pageH - margin) {
+        doc.addPage();
+        y = margin;
+      }
+      doc.text(line, margin, y);
+      y += lineH;
+    }
+
+    doc.save(`aquasense-report-${selected.id}.pdf`);
+  }
+
   return (
     <>
       <Navigation connected={connected} />
-      <main className="pt-14 max-w-7xl mx-auto px-4 py-6">
+      <main className="mt-10 pt-14 max-w-7xl mx-auto px-4 py-6">
         <div className="mb-6 flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold text-slate-100 mb-1">Compliance Reports</h1>
@@ -103,10 +139,16 @@ export default function ReportsPage() {
               <div className="card h-full">
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-xs text-slate-500">Report #{selected.id} · Generated {fmtTs(selected.generated_at)}</div>
-                  <button onClick={copyReport}
-                    className="text-xs bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-slate-300 transition-colors">
-                    Copy
-                  </button>
+                  <div className="flex gap-2">
+                    <button onClick={copyReport}
+                      className="text-xs bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-slate-300 transition-colors">
+                      Copy
+                    </button>
+                    <button onClick={downloadPDF}
+                      className="text-xs bg-blue-700 hover:bg-blue-600 px-2 py-1 rounded text-white transition-colors">
+                      ↓ Download PDF
+                    </button>
+                  </div>
                 </div>
                 <pre className="text-xs text-slate-300 whitespace-pre-wrap font-mono leading-relaxed overflow-auto max-h-[70vh]">
                   {selected.summary}

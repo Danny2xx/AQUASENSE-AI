@@ -12,9 +12,9 @@ export async function fetchHistory(facilityId = 'demo-food-processing-plant', li
   return res.json();
 }
 
-export async function fetchAlerts(facilityId = 'demo-food-processing-plant', limit = 50) {
+export async function fetchAlerts(facilityId = 'demo-food-processing-plant', limit = 50): Promise<{ alerts: any[]; total: number }> {
   const res = await fetch(`${BASE}/api/alerts?facility_id=${facilityId}&limit=${limit}`, { cache: 'no-store' });
-  if (!res.ok) return [];
+  if (!res.ok) return { alerts: [], total: 0 };
   return res.json();
 }
 
