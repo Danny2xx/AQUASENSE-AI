@@ -1,0 +1,10 @@
+field_or_file,description
+direct_sensor_readings.csv,"Direct telemetry only: pH, temperature, flow, turbidity, conductivity, DO, ORP, ammonia, UV254."
+soft_sensor_estimates.csv,"Estimated COD, BOD, and TSS derived from direct telemetry."
+lab_results.csv,"Sparse lab-confirmed COD, BOD, TSS, and ammonia samples."
+operational_compliance_dataset.csv,"Merged production-style dataset used by rules, alerts, reports, and dashboard."
+compliance_training_dataset.csv,"Model-ready dataset with labels, source flags, lag features, and rolling features."
+*_value_source,"Whether a compliance value came from lab_confirmed, soft_sensor_estimate, or online_sensor."
+breach_next_15min,True when a breach occurs within the next 15 minutes.
+breach_next_30min,True when a breach occurs within the next 30 minutes.
+breach_next_60min,True when a breach occurs within the next 60 minutes.
