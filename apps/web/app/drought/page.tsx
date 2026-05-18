@@ -11,7 +11,6 @@ import { Droplets, Thermometer, AlertTriangle, MapPin, RefreshCw } from 'lucide-
 
 const BASE = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
 
-// Leaflet must not run server-side
 const DroughtMap = dynamic(() => import('../../components/DroughtMap'), { ssr: false });
 
 interface CityData {
@@ -33,13 +32,29 @@ interface RegionalData {
   cities: CityData[];
 }
 
-function DroughtGauge({ index, label, color }: { index: number; label: string; color: string }) {
+function useTheme() {
+  const [isDark, setIsDark] = useState(true);
+  useEffect(() => {
+    const update = () =>
+      setIsDark(document.documentElement.getAttribute('data-theme') !== 'light');
+    update();
+    const obs = new MutationObserver(update);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => obs.disconnect();
+  }, []);
+  return isDark;
+}
+
+function DroughtGauge({ index, label, color, isDark }: {
+  index: number; label: string; color: string; isDark: boolean;
+}) {
   const pct = (index / 5) * 100;
+  const trackColor = isDark ? '#1e293b' : '#e2e8f0';
   return (
     <div className="flex flex-col items-center gap-3">
       <div className="relative w-36 h-36">
         <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-          <circle cx="50" cy="50" r="40" fill="none" stroke="#1e293b" strokeWidth="10" />
+          <circle cx="50" cy="50" r="40" fill="none" stroke={trackColor} strokeWidth="10" />
           <circle
             cx="50" cy="50" r="40" fill="none"
             stroke={color} strokeWidth="10"
@@ -49,7 +64,7 @@ function DroughtGauge({ index, label, color }: { index: number; label: string; c
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-3xl font-bold text-white">{index}</span>
+          <span className="text-3xl font-bold text-slate-100">{index}</span>
           <span className="text-xs text-slate-400">/ 5</span>
         </div>
       </div>
@@ -88,7 +103,7 @@ function StatCard({ icon: Icon, label, value, sub, color = '#60a5fa' }: {
       </div>
       <div>
         <div className="text-xs text-slate-500 mb-0.5">{label}</div>
-        <div className="text-lg font-bold text-white">{value}</div>
+        <div className="text-lg font-bold text-slate-100">{value}</div>
         <div className="text-xs text-slate-400 mt-0.5">{sub}</div>
       </div>
     </div>
@@ -96,12 +111,12 @@ function StatCard({ icon: Icon, label, value, sub, color = '#60a5fa' }: {
 }
 
 const DROUGHT_LEVELS = [
-  { label: 'D0 No Drought',        color: '#22c55e' },
-  { label: 'D1 Abnormally Dry',    color: '#a3e635' },
-  { label: 'D2 Moderate Drought',  color: '#facc15' },
-  { label: 'D3 Severe Drought',    color: '#f97316' },
-  { label: 'D4 Extreme Drought',   color: '#ef4444' },
-  { label: 'D5 Exceptional',       color: '#7f1d1d' },
+  { label: 'D0 No Drought',       color: '#22c55e' },
+  { label: 'D1 Abnormally Dry',   color: '#a3e635' },
+  { label: 'D2 Moderate Drought', color: '#facc15' },
+  { label: 'D3 Severe Drought',   color: '#f97316' },
+  { label: 'D4 Extreme Drought',  color: '#ef4444' },
+  { label: 'D5 Exceptional',      color: '#7f1d1d' },
 ];
 
 const PRECIP_COLOR = '#38bdf8';
@@ -110,10 +125,18 @@ const ET_COLOR     = '#fb923c';
 
 export default function DroughtPage() {
   const { connected } = useLiveData();
+  const isDark = useTheme();
   const [regional, setRegional] = useState<RegionalData | null>(null);
   const [loading, setLoading]   = useState(true);
   const [error, setError]       = useState<string | null>(null);
   const [selected, setSelected] = useState<string>('Birmingham');
+
+  // Theme-aware chart colours
+  const gridStroke     = isDark ? '#1e293b' : '#e2e8f0';
+  const tickFill       = isDark ? '#64748b' : '#94a3b8';
+  const tooltipBg      = isDark ? '#0f172a' : '#ffffff';
+  const tooltipBorder  = isDark ? '#334155' : '#e2e8f0';
+  const tooltipLabel   = isDark ? '#94a3b8' : '#64748b';
 
   async function load() {
     setLoading(true);
@@ -146,15 +169,20 @@ export default function DroughtPage() {
     : focus.precipAnomaly >= 0 ? '#22c55e'
     : focus.precipAnomaly > -30 ? '#facc15' : '#ef4444';
 
+  const tooltipStyle = {
+    contentStyle: { background: tooltipBg, border: `1px solid ${tooltipBorder}`, borderRadius: 8, fontSize: 12 },
+    labelStyle: { color: tooltipLabel },
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-200">
       <Navigation connected={connected} />
-      <main className="max-w-7xl mx-auto px-4 pt-20 pb-10">
+      <main className="max-w-7xl mx-auto px-4 pt-20 mt-10 pb-10">
 
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-white">Drought & Groundwater Stress</h1>
+            <h1 className="text-2xl font-bold text-slate-100">Drought &amp; Groundwater Stress</h1>
             <div className="flex items-center gap-1.5 text-slate-400 text-sm mt-1">
               <MapPin size={13} />
               <span>UK Regional Comparison · Facility: Birmingham, UK</span>
@@ -194,13 +222,13 @@ export default function DroughtPage() {
 
         {regional && (
           <>
-            {/* Map + facility panel */}
+            {/* Map + right panel */}
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-6">
 
               {/* Leaflet map */}
               <div className="lg:col-span-3 bg-slate-900 rounded-2xl border border-slate-700 overflow-hidden" style={{ height: 480 }}>
                 <div className="px-4 py-3 border-b border-slate-700 flex items-center justify-between">
-                  <div className="text-sm font-semibold text-white">UK Drought Index Map</div>
+                  <div className="text-sm font-semibold text-slate-100">UK Drought Index Map</div>
                   <div className="flex flex-wrap gap-2">
                     {DROUGHT_LEVELS.map(l => (
                       <span key={l.label} className="flex items-center gap-1 text-xs text-slate-400">
@@ -215,14 +243,14 @@ export default function DroughtPage() {
                     cities={regional.cities}
                     onSelect={setSelected}
                     selected={selected}
+                    isDark={isDark}
                   />
                 </div>
               </div>
 
-              {/* Right panel: gauge + stress + stats */}
+              {/* Right panel */}
               <div className="lg:col-span-2 flex flex-col gap-4">
 
-                {/* City selector */}
                 <div className="bg-slate-900 rounded-2xl border border-slate-700 p-4">
                   <label className="text-xs text-slate-500 block mb-1.5">Inspect city</label>
                   <select
@@ -240,19 +268,21 @@ export default function DroughtPage() {
 
                 {focus && (
                   <>
-                    {/* Drought gauge */}
                     <div className="bg-slate-900 rounded-2xl border border-slate-700 p-5 flex flex-col items-center">
                       <DroughtGauge
                         index={focus.drought.index}
                         label={focus.drought.label}
                         color={focus.drought.color}
+                        isDark={isDark}
                       />
                       <div className="mt-3 grid grid-cols-6 gap-1 w-full text-center text-xs">
                         {['D0','D1','D2','D3','D4','D5'].map((d, i) => (
                           <div key={d} className="rounded py-0.5"
                             style={{
-                              background: i <= focus.drought.index ? focus.drought.color + '33' : '#1e293b',
-                              color: i <= focus.drought.index ? focus.drought.color : '#475569',
+                              background: i <= focus.drought.index
+                                ? focus.drought.color + '33'
+                                : isDark ? '#1e293b' : '#f1f5f9',
+                              color: i <= focus.drought.index ? focus.drought.color : '#64748b',
                               fontWeight: i === focus.drought.index ? 700 : 400,
                             }}
                           >{d}</div>
@@ -260,7 +290,6 @@ export default function DroughtPage() {
                       </div>
                     </div>
 
-                    {/* Stress + stats */}
                     <div className="bg-slate-900 rounded-2xl border border-slate-700 p-5 flex flex-col gap-4">
                       <StressBar value={focus.groundwaterStress} />
                       <div className="grid grid-cols-2 gap-3 pt-1">
@@ -280,11 +309,11 @@ export default function DroughtPage() {
               </div>
             </div>
 
-            {/* Trend charts for selected city */}
+            {/* Trend charts */}
             {focus && (
               <>
                 <div className="bg-slate-900 rounded-2xl border border-slate-700 p-6 mb-6">
-                  <div className="font-semibold text-white mb-0.5">
+                  <div className="font-semibold text-slate-100 mb-0.5">
                     30-Day Precipitation vs ET₀ — {focus.name}
                   </div>
                   <div className="text-xs text-slate-500 mb-4">Daily rainfall vs evapotranspiration demand</div>
@@ -300,11 +329,11 @@ export default function DroughtPage() {
                           <stop offset="95%" stopColor={ET_COLOR} stopOpacity={0} />
                         </linearGradient>
                       </defs>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                      <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#64748b' }} tickFormatter={d => d.slice(5)} />
-                      <YAxis tick={{ fontSize: 10, fill: '#64748b' }} unit=" mm" />
-                      <Tooltip contentStyle={{ background: '#0f172a', border: '1px solid #334155', borderRadius: 8, fontSize: 12 }} labelStyle={{ color: '#94a3b8' }} />
-                      <Legend wrapperStyle={{ fontSize: 12, color: '#94a3b8' }} />
+                      <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
+                      <XAxis dataKey="date" tick={{ fontSize: 10, fill: tickFill }} tickFormatter={d => d.slice(5)} />
+                      <YAxis tick={{ fontSize: 10, fill: tickFill }} unit=" mm" />
+                      <Tooltip {...tooltipStyle} />
+                      <Legend wrapperStyle={{ fontSize: 12, color: tickFill }} />
                       <Area type="monotone" dataKey="precipitation" name="Precipitation (mm)" stroke={PRECIP_COLOR} fill="url(#gprecip)" strokeWidth={2} dot={false} />
                       <Area type="monotone" dataKey="et" name="ET₀ (mm)" stroke={ET_COLOR} fill="url(#get)" strokeWidth={1.5} dot={false} strokeDasharray="4 2" />
                     </AreaChart>
@@ -312,14 +341,14 @@ export default function DroughtPage() {
                 </div>
 
                 <div className="bg-slate-900 rounded-2xl border border-slate-700 p-6">
-                  <div className="font-semibold text-white mb-0.5">Soil Moisture Saturation — {focus.name}</div>
+                  <div className="font-semibold text-slate-100 mb-0.5">Soil Moisture Saturation — {focus.name}</div>
                   <div className="text-xs text-slate-500 mb-4">0–7 cm depth · percentage of field capacity</div>
                   <ResponsiveContainer width="100%" height={170}>
                     <BarChart data={focus.trend} margin={{ top: 0, right: 10, left: 0, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                      <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#64748b' }} tickFormatter={d => d.slice(5)} />
-                      <YAxis tick={{ fontSize: 10, fill: '#64748b' }} unit="%" domain={[0, 100]} />
-                      <Tooltip contentStyle={{ background: '#0f172a', border: '1px solid #334155', borderRadius: 8, fontSize: 12 }} labelStyle={{ color: '#94a3b8' }} formatter={(v: number) => [`${v}%`, 'Soil Moisture']} />
+                      <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
+                      <XAxis dataKey="date" tick={{ fontSize: 10, fill: tickFill }} tickFormatter={d => d.slice(5)} />
+                      <YAxis tick={{ fontSize: 10, fill: tickFill }} unit="%" domain={[0, 100]} />
+                      <Tooltip {...tooltipStyle} formatter={(v: number) => [`${v}%`, 'Soil Moisture']} />
                       <Bar dataKey="soilMoisture" name="Soil Moisture %" fill={SM_COLOR} radius={[3, 3, 0, 0]} opacity={0.85} />
                     </BarChart>
                   </ResponsiveContainer>

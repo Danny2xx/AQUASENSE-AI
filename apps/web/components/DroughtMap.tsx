@@ -19,9 +19,10 @@ interface Props {
   cities: CityData[];
   selected?: string;
   onSelect?: (name: string) => void;
+  isDark?: boolean;
 }
 
-export default function DroughtMap({ cities, selected, onSelect }: Props) {
+export default function DroughtMap({ cities, selected, onSelect, isDark = true }: Props) {
   useEffect(() => {
     // Fix Leaflet default icon path broken by webpack
     // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -41,7 +42,9 @@ export default function DroughtMap({ cities, selected, onSelect }: Props) {
       style={{ height: '100%', width: '100%', background: '#0f172a' }}
     >
       <TileLayer
-        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+        url={isDark
+          ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+          : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'}
         attribution='&copy; <a href="https://carto.com/">CARTO</a>'
       />
 

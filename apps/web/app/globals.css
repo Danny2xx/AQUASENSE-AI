@@ -5,6 +5,7 @@
 /* ── Dark theme (default) ─────────────────────────────── */
 :root,
 [data-theme="dark"] {
+  --aqua-sidebar-width: 16rem;
   --bg: #0f172a;
   --surface: #1e293b;
   --border: #334155;
@@ -47,6 +48,10 @@
   --slate-bg-7: #e2e8f0;
 }
 
+[data-sidebar-collapsed="true"] {
+  --aqua-sidebar-width: 4.75rem;
+}
+
 /* ── Base ──────────────────────────────────────────────── */
 body {
   background-color: var(--bg);
@@ -79,6 +84,28 @@ body {
 nav.aqua-nav {
   background-color: var(--nav-bg) !important;
   border-color: var(--nav-border) !important;
+}
+
+.aqua-mobile-menu {
+  background-color: var(--nav-bg) !important;
+  border-color: var(--nav-border) !important;
+}
+
+@media (min-width: 768px) {
+  body:has(nav.aqua-nav) main {
+    margin-top: 0 !important;
+    margin-left: var(--aqua-sidebar-width) !important;
+    margin-right: auto !important;
+    padding-top: 1.5rem !important;
+    transition: margin-left 0.2s ease, width 0.2s ease;
+  }
+}
+
+@media (max-width: 767px) {
+  body:has(nav.aqua-nav) main {
+    margin-top: 0 !important;
+    padding-top: 4.75rem !important;
+  }
 }
 
 .theme-toggle-btn {
@@ -150,3 +177,9 @@ nav.aqua-nav {
 
 /* ── Pre / report text ───────────────────────────────── */
 [data-theme="light"] pre { color: #1e293b; }
+
+/* ── Drought page ────────────────────────────────────── */
+[data-theme="light"] .bg-slate-950 { background-color: var(--bg); }
+
+/* ── Leaflet map light mode ──────────────────────────── */
+[data-theme="light"] .leaflet-container { background: #e8f4f8; }
