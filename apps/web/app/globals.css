@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --border: #334155;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.status-green  { color: #22c55e; }
+.status-watch  { color: #3b82f6; }
+.status-amber  { color: #f59e0b; }
+.status-red    { color: #ef4444; }
+
+.badge-green  { background: #14532d; color: #4ade80; }
+.badge-watch  { background: #1e3a8a; color: #93c5fd; }
+.badge-amber  { background: #78350f; color: #fcd34d; }
+.badge-red    { background: #7f1d1d; color: #fca5a5; }
+.badge-gray   { background: #1e293b; color: #94a3b8; }
