@@ -14,6 +14,14 @@ The virtual environment was created with Miniconda's stable Python build:
 Python 3.13.12
 ```
 
+Paths in `pyvenv.cfg` are machine-specific. The important shared contract is:
+
+```text
+Python 3.13.12
+.venv/ at the project root
+dependencies installed from requirements.txt
+```
+
 `pyvenv.cfg` details:
 
 ```text
@@ -34,6 +42,12 @@ From the project root:
 source .venv/bin/activate
 ```
 
+On Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
 Check the active Python:
 
 ```bash
@@ -52,6 +66,12 @@ From the project root:
 
 ```bash
 .venv/bin/python -m pip install -r requirements.txt
+```
+
+On Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
 ## Verify Installation
