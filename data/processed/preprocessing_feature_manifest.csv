@@ -1,0 +1,470 @@
+source_feature,imputed_feature,missing_pct_all_rows,missing_pct_train,train_nunique_after_impute,excluded_reason,keep_for_model
+flow_rate_lps_rt,flow_rate_lps_rt__imputed,0.0,0.0,6022,,True
+temperature_c_rt,temperature_c_rt__imputed,0.0,0.0,6022,,True
+ph_rt,ph_rt__imputed,0.0814,0.0,6022,,True
+turbidity_ntu_rt,turbidity_ntu_rt__imputed,0.0814,0.0,6022,,True
+conductivity_us_cm_rt,conductivity_us_cm_rt__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt,dissolved_oxygen_mg_l_rt__imputed,0.0,0.0,6022,,True
+orp_mv_rt,orp_mv_rt__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt,ammonia_mg_l_rt__imputed,0.0,0.0,6022,,True
+uv254_abs_rt,uv254_abs_rt__imputed,0.0814,0.0,6022,,True
+tss_mg_l_rt,tss_mg_l_rt__imputed,0.0814,0.0,6022,,True
+cod_mg_l_rt,cod_mg_l_rt__imputed,0.0814,0.0,6022,,True
+bod_mg_l_rt,bod_mg_l_rt__imputed,0.0814,0.0,6022,,True
+sensor_status_ok,sensor_status_ok__imputed,0.0,0.0,1,low variance in train,False
+sensor_status_missing_burst,sensor_status_missing_burst__imputed,0.0,0.0,1,low variance in train,False
+was_inserted_timestamp,was_inserted_timestamp__imputed,0.0,0.0,1,low variance in train,False
+missing_or_invalid_sensor_count,missing_or_invalid_sensor_count__imputed,0.0,0.0,1,low variance in train,False
+missing_or_invalid_count_60min,missing_or_invalid_count_60min__imputed,0.0,0.0,1,low variance in train,False
+any_sensor_jump_flag,any_sensor_jump_flag__imputed,0.0,0.0,2,,True
+flow_rate_lps_missing_or_invalid,flow_rate_lps_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+temperature_c_missing_or_invalid,temperature_c_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+ph_missing_or_invalid,ph_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+turbidity_ntu_missing_or_invalid,turbidity_ntu_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+conductivity_us_cm_missing_or_invalid,conductivity_us_cm_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+dissolved_oxygen_mg_l_missing_or_invalid,dissolved_oxygen_mg_l_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+orp_mv_missing_or_invalid,orp_mv_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+ammonia_mg_l_missing_or_invalid,ammonia_mg_l_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+uv254_abs_missing_or_invalid,uv254_abs_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+estimated_tss_mg_l_missing_or_invalid,estimated_tss_mg_l_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+estimated_cod_mg_l_missing_or_invalid,estimated_cod_mg_l_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+estimated_bod_mg_l_missing_or_invalid,estimated_bod_mg_l_missing_or_invalid__imputed,0.0,0.0,1,low variance in train,False
+flow_rate_lps_rt_lag_5min,flow_rate_lps_rt_lag_5min__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_lag_15min,flow_rate_lps_rt_lag_15min__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_lag_30min,flow_rate_lps_rt_lag_30min__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_lag_60min,flow_rate_lps_rt_lag_60min__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_lag_120min,flow_rate_lps_rt_lag_120min__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_rolling_15min_mean,flow_rate_lps_rt_rolling_15min_mean__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_rolling_15min_std,flow_rate_lps_rt_rolling_15min_std__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_rolling_15min_min,flow_rate_lps_rt_rolling_15min_min__imputed,0.0,0.0,3049,,True
+flow_rate_lps_rt_rolling_15min_max,flow_rate_lps_rt_rolling_15min_max__imputed,0.0,0.0,3054,,True
+flow_rate_lps_rt_rolling_15min_median,flow_rate_lps_rt_rolling_15min_median__imputed,0.0,0.0,3657,,True
+flow_rate_lps_rt_rolling_15min_range,flow_rate_lps_rt_rolling_15min_range__imputed,0.0,0.0,5055,correlation > 0.995 on train,False
+flow_rate_lps_rt_rolling_30min_mean,flow_rate_lps_rt_rolling_30min_mean__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_rolling_30min_std,flow_rate_lps_rt_rolling_30min_std__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_rolling_30min_min,flow_rate_lps_rt_rolling_30min_min__imputed,0.0,0.0,1782,,True
+flow_rate_lps_rt_rolling_30min_max,flow_rate_lps_rt_rolling_30min_max__imputed,0.0,0.0,1791,,True
+flow_rate_lps_rt_rolling_30min_median,flow_rate_lps_rt_rolling_30min_median__imputed,0.0,0.0,4078,correlation > 0.995 on train,False
+flow_rate_lps_rt_rolling_30min_range,flow_rate_lps_rt_rolling_30min_range__imputed,0.0,0.0,3252,,True
+flow_rate_lps_rt_rolling_60min_mean,flow_rate_lps_rt_rolling_60min_mean__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_rolling_60min_std,flow_rate_lps_rt_rolling_60min_std__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_rolling_60min_min,flow_rate_lps_rt_rolling_60min_min__imputed,0.0,0.0,1047,,True
+flow_rate_lps_rt_rolling_60min_max,flow_rate_lps_rt_rolling_60min_max__imputed,0.0,0.0,1025,,True
+flow_rate_lps_rt_rolling_60min_median,flow_rate_lps_rt_rolling_60min_median__imputed,0.0,0.0,3229,,True
+flow_rate_lps_rt_rolling_60min_range,flow_rate_lps_rt_rolling_60min_range__imputed,0.0,0.0,1963,,True
+flow_rate_lps_rt_rolling_120min_mean,flow_rate_lps_rt_rolling_120min_mean__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_rolling_120min_std,flow_rate_lps_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_rolling_120min_min,flow_rate_lps_rt_rolling_120min_min__imputed,0.0,0.0,675,,True
+flow_rate_lps_rt_rolling_120min_max,flow_rate_lps_rt_rolling_120min_max__imputed,0.0,0.0,647,,True
+flow_rate_lps_rt_rolling_120min_median,flow_rate_lps_rt_rolling_120min_median__imputed,0.0,0.0,3142,,True
+flow_rate_lps_rt_rolling_120min_range,flow_rate_lps_rt_rolling_120min_range__imputed,0.0,0.0,1272,,True
+flow_rate_lps_rt_delta_5min,flow_rate_lps_rt_delta_5min__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_delta_15min,flow_rate_lps_rt_delta_15min__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_delta_30min,flow_rate_lps_rt_delta_30min__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_pct_change_30min,flow_rate_lps_rt_pct_change_30min__imputed,0.0,0.0,6022,,True
+flow_rate_lps_rt_rolling_30min_slope,flow_rate_lps_rt_rolling_30min_slope__imputed,0.0,0.0,6022,,True
+temperature_c_rt_lag_5min,temperature_c_rt_lag_5min__imputed,0.0,0.0,6022,,True
+temperature_c_rt_lag_15min,temperature_c_rt_lag_15min__imputed,0.0,0.0,6022,,True
+temperature_c_rt_lag_30min,temperature_c_rt_lag_30min__imputed,0.0,0.0,6022,,True
+temperature_c_rt_lag_60min,temperature_c_rt_lag_60min__imputed,0.0,0.0,6022,,True
+temperature_c_rt_lag_120min,temperature_c_rt_lag_120min__imputed,0.0,0.0,6022,,True
+temperature_c_rt_rolling_15min_mean,temperature_c_rt_rolling_15min_mean__imputed,0.0,0.0,6022,,True
+temperature_c_rt_rolling_15min_std,temperature_c_rt_rolling_15min_std__imputed,0.0,0.0,6022,,True
+temperature_c_rt_rolling_15min_min,temperature_c_rt_rolling_15min_min__imputed,0.0,0.0,3043,,True
+temperature_c_rt_rolling_15min_max,temperature_c_rt_rolling_15min_max__imputed,0.0,0.0,3026,,True
+temperature_c_rt_rolling_15min_median,temperature_c_rt_rolling_15min_median__imputed,0.0,0.0,3644,,True
+temperature_c_rt_rolling_15min_range,temperature_c_rt_rolling_15min_range__imputed,0.0,0.0,5042,correlation > 0.995 on train,False
+temperature_c_rt_rolling_30min_mean,temperature_c_rt_rolling_30min_mean__imputed,0.0,0.0,6022,,True
+temperature_c_rt_rolling_30min_std,temperature_c_rt_rolling_30min_std__imputed,0.0,0.0,6022,,True
+temperature_c_rt_rolling_30min_min,temperature_c_rt_rolling_30min_min__imputed,0.0,0.0,1765,,True
+temperature_c_rt_rolling_30min_max,temperature_c_rt_rolling_30min_max__imputed,0.0,0.0,1763,,True
+temperature_c_rt_rolling_30min_median,temperature_c_rt_rolling_30min_median__imputed,0.0,0.0,4034,,True
+temperature_c_rt_rolling_30min_range,temperature_c_rt_rolling_30min_range__imputed,0.0,0.0,3229,,True
+temperature_c_rt_rolling_60min_mean,temperature_c_rt_rolling_60min_mean__imputed,0.0,0.0,6022,,True
+temperature_c_rt_rolling_60min_std,temperature_c_rt_rolling_60min_std__imputed,0.0,0.0,6022,,True
+temperature_c_rt_rolling_60min_min,temperature_c_rt_rolling_60min_min__imputed,0.0,0.0,1020,,True
+temperature_c_rt_rolling_60min_max,temperature_c_rt_rolling_60min_max__imputed,0.0,0.0,989,,True
+temperature_c_rt_rolling_60min_median,temperature_c_rt_rolling_60min_median__imputed,0.0,0.0,3178,,True
+temperature_c_rt_rolling_60min_range,temperature_c_rt_rolling_60min_range__imputed,0.0,0.0,1912,,True
+temperature_c_rt_rolling_120min_mean,temperature_c_rt_rolling_120min_mean__imputed,0.0,0.0,6022,,True
+temperature_c_rt_rolling_120min_std,temperature_c_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+temperature_c_rt_rolling_120min_min,temperature_c_rt_rolling_120min_min__imputed,0.0,0.0,630,,True
+temperature_c_rt_rolling_120min_max,temperature_c_rt_rolling_120min_max__imputed,0.0,0.0,626,,True
+temperature_c_rt_rolling_120min_median,temperature_c_rt_rolling_120min_median__imputed,0.0,0.0,3078,,True
+temperature_c_rt_rolling_120min_range,temperature_c_rt_rolling_120min_range__imputed,0.0,0.0,1215,,True
+temperature_c_rt_delta_5min,temperature_c_rt_delta_5min__imputed,0.0,0.0,6022,,True
+temperature_c_rt_delta_15min,temperature_c_rt_delta_15min__imputed,0.0,0.0,6022,,True
+temperature_c_rt_delta_30min,temperature_c_rt_delta_30min__imputed,0.0,0.0,6022,,True
+temperature_c_rt_pct_change_30min,temperature_c_rt_pct_change_30min__imputed,0.0,0.0,6022,correlation > 0.995 on train,False
+temperature_c_rt_rolling_30min_slope,temperature_c_rt_rolling_30min_slope__imputed,0.0,0.0,6022,,True
+ph_rt_lag_5min,ph_rt_lag_5min__imputed,0.0814,0.0,6022,,True
+ph_rt_lag_15min,ph_rt_lag_15min__imputed,0.0814,0.0,6022,,True
+ph_rt_lag_30min,ph_rt_lag_30min__imputed,0.0814,0.0,6022,,True
+ph_rt_lag_60min,ph_rt_lag_60min__imputed,0.0814,0.0,6022,,True
+ph_rt_lag_120min,ph_rt_lag_120min__imputed,0.0814,0.0,6022,,True
+ph_rt_rolling_15min_mean,ph_rt_rolling_15min_mean__imputed,0.0814,0.0,6022,,True
+ph_rt_rolling_15min_std,ph_rt_rolling_15min_std__imputed,0.0814,0.0,6022,,True
+ph_rt_rolling_15min_min,ph_rt_rolling_15min_min__imputed,0.0814,0.0,3043,,True
+ph_rt_rolling_15min_max,ph_rt_rolling_15min_max__imputed,0.0814,0.0,3054,,True
+ph_rt_rolling_15min_median,ph_rt_rolling_15min_median__imputed,0.0814,0.0,3656,,True
+ph_rt_rolling_15min_range,ph_rt_rolling_15min_range__imputed,0.0814,0.0,5053,correlation > 0.995 on train,False
+ph_rt_rolling_30min_mean,ph_rt_rolling_30min_mean__imputed,0.0697,0.0,6022,,True
+ph_rt_rolling_30min_std,ph_rt_rolling_30min_std__imputed,0.0697,0.0,6022,,True
+ph_rt_rolling_30min_min,ph_rt_rolling_30min_min__imputed,0.0697,0.0,1750,,True
+ph_rt_rolling_30min_max,ph_rt_rolling_30min_max__imputed,0.0697,0.0,1768,,True
+ph_rt_rolling_30min_median,ph_rt_rolling_30min_median__imputed,0.0697,0.0,4000,,True
+ph_rt_rolling_30min_range,ph_rt_rolling_30min_range__imputed,0.0697,0.0,3188,,True
+ph_rt_rolling_60min_mean,ph_rt_rolling_60min_mean__imputed,0.0697,0.0,6022,,True
+ph_rt_rolling_60min_std,ph_rt_rolling_60min_std__imputed,0.0697,0.0,6022,,True
+ph_rt_rolling_60min_min,ph_rt_rolling_60min_min__imputed,0.0697,0.0,991,,True
+ph_rt_rolling_60min_max,ph_rt_rolling_60min_max__imputed,0.0697,0.0,1001,,True
+ph_rt_rolling_60min_median,ph_rt_rolling_60min_median__imputed,0.0697,0.0,3168,,True
+ph_rt_rolling_60min_range,ph_rt_rolling_60min_range__imputed,0.0697,0.0,1877,,True
+ph_rt_rolling_120min_mean,ph_rt_rolling_120min_mean__imputed,0.0,0.0,6022,,True
+ph_rt_rolling_120min_std,ph_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+ph_rt_rolling_120min_min,ph_rt_rolling_120min_min__imputed,0.0,0.0,637,,True
+ph_rt_rolling_120min_max,ph_rt_rolling_120min_max__imputed,0.0,0.0,656,,True
+ph_rt_rolling_120min_median,ph_rt_rolling_120min_median__imputed,0.0,0.0,3116,,True
+ph_rt_rolling_120min_range,ph_rt_rolling_120min_range__imputed,0.0,0.0,1234,,True
+ph_rt_delta_5min,ph_rt_delta_5min__imputed,0.093,0.0,6022,,True
+ph_rt_delta_15min,ph_rt_delta_15min__imputed,0.1162,0.0,6022,,True
+ph_rt_delta_30min,ph_rt_delta_30min__imputed,0.1511,0.0,6022,,True
+ph_rt_pct_change_30min,ph_rt_pct_change_30min__imputed,0.1511,0.0,6022,,True
+ph_rt_rolling_30min_slope,ph_rt_rolling_30min_slope__imputed,0.093,0.0,6022,,True
+turbidity_ntu_rt_lag_5min,turbidity_ntu_rt_lag_5min__imputed,0.0814,0.0,6022,,True
+turbidity_ntu_rt_lag_15min,turbidity_ntu_rt_lag_15min__imputed,0.0814,0.0,6022,,True
+turbidity_ntu_rt_lag_30min,turbidity_ntu_rt_lag_30min__imputed,0.0814,0.0,6022,,True
+turbidity_ntu_rt_lag_60min,turbidity_ntu_rt_lag_60min__imputed,0.0814,0.0,6022,,True
+turbidity_ntu_rt_lag_120min,turbidity_ntu_rt_lag_120min__imputed,0.0814,0.0,6022,,True
+turbidity_ntu_rt_rolling_15min_mean,turbidity_ntu_rt_rolling_15min_mean__imputed,0.0814,0.0,6022,,True
+turbidity_ntu_rt_rolling_15min_std,turbidity_ntu_rt_rolling_15min_std__imputed,0.0814,0.0,6022,,True
+turbidity_ntu_rt_rolling_15min_min,turbidity_ntu_rt_rolling_15min_min__imputed,0.0814,0.0,3008,,True
+turbidity_ntu_rt_rolling_15min_max,turbidity_ntu_rt_rolling_15min_max__imputed,0.0814,0.0,3020,,True
+turbidity_ntu_rt_rolling_15min_median,turbidity_ntu_rt_rolling_15min_median__imputed,0.0814,0.0,3643,,True
+turbidity_ntu_rt_rolling_15min_range,turbidity_ntu_rt_rolling_15min_range__imputed,0.0814,0.0,5024,correlation > 0.995 on train,False
+turbidity_ntu_rt_rolling_30min_mean,turbidity_ntu_rt_rolling_30min_mean__imputed,0.0697,0.0,6022,,True
+turbidity_ntu_rt_rolling_30min_std,turbidity_ntu_rt_rolling_30min_std__imputed,0.0697,0.0,6022,,True
+turbidity_ntu_rt_rolling_30min_min,turbidity_ntu_rt_rolling_30min_min__imputed,0.0697,0.0,1766,,True
+turbidity_ntu_rt_rolling_30min_max,turbidity_ntu_rt_rolling_30min_max__imputed,0.0697,0.0,1774,,True
+turbidity_ntu_rt_rolling_30min_median,turbidity_ntu_rt_rolling_30min_median__imputed,0.0697,0.0,3970,,True
+turbidity_ntu_rt_rolling_30min_range,turbidity_ntu_rt_rolling_30min_range__imputed,0.0697,0.0,3218,,True
+turbidity_ntu_rt_rolling_60min_mean,turbidity_ntu_rt_rolling_60min_mean__imputed,0.0697,0.0,6022,,True
+turbidity_ntu_rt_rolling_60min_std,turbidity_ntu_rt_rolling_60min_std__imputed,0.0697,0.0,6022,,True
+turbidity_ntu_rt_rolling_60min_min,turbidity_ntu_rt_rolling_60min_min__imputed,0.0697,0.0,999,,True
+turbidity_ntu_rt_rolling_60min_max,turbidity_ntu_rt_rolling_60min_max__imputed,0.0697,0.0,986,,True
+turbidity_ntu_rt_rolling_60min_median,turbidity_ntu_rt_rolling_60min_median__imputed,0.0697,0.0,3146,,True
+turbidity_ntu_rt_rolling_60min_range,turbidity_ntu_rt_rolling_60min_range__imputed,0.0697,0.0,1895,,True
+turbidity_ntu_rt_rolling_120min_mean,turbidity_ntu_rt_rolling_120min_mean__imputed,0.0,0.0,6022,,True
+turbidity_ntu_rt_rolling_120min_std,turbidity_ntu_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+turbidity_ntu_rt_rolling_120min_min,turbidity_ntu_rt_rolling_120min_min__imputed,0.0,0.0,614,,True
+turbidity_ntu_rt_rolling_120min_max,turbidity_ntu_rt_rolling_120min_max__imputed,0.0,0.0,607,,True
+turbidity_ntu_rt_rolling_120min_median,turbidity_ntu_rt_rolling_120min_median__imputed,0.0,0.0,2794,,True
+turbidity_ntu_rt_rolling_120min_range,turbidity_ntu_rt_rolling_120min_range__imputed,0.0,0.0,1181,,True
+turbidity_ntu_rt_delta_5min,turbidity_ntu_rt_delta_5min__imputed,0.093,0.0,6022,,True
+turbidity_ntu_rt_delta_15min,turbidity_ntu_rt_delta_15min__imputed,0.1162,0.0,6022,,True
+turbidity_ntu_rt_delta_30min,turbidity_ntu_rt_delta_30min__imputed,0.1511,0.0,6022,,True
+turbidity_ntu_rt_pct_change_30min,turbidity_ntu_rt_pct_change_30min__imputed,0.1511,0.0,6022,,True
+turbidity_ntu_rt_rolling_30min_slope,turbidity_ntu_rt_rolling_30min_slope__imputed,0.093,0.0,6022,,True
+conductivity_us_cm_rt_lag_5min,conductivity_us_cm_rt_lag_5min__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_lag_15min,conductivity_us_cm_rt_lag_15min__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_lag_30min,conductivity_us_cm_rt_lag_30min__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_lag_60min,conductivity_us_cm_rt_lag_60min__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_lag_120min,conductivity_us_cm_rt_lag_120min__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_rolling_15min_mean,conductivity_us_cm_rt_rolling_15min_mean__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_rolling_15min_std,conductivity_us_cm_rt_rolling_15min_std__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_rolling_15min_min,conductivity_us_cm_rt_rolling_15min_min__imputed,0.0,0.0,3019,,True
+conductivity_us_cm_rt_rolling_15min_max,conductivity_us_cm_rt_rolling_15min_max__imputed,0.0,0.0,3024,,True
+conductivity_us_cm_rt_rolling_15min_median,conductivity_us_cm_rt_rolling_15min_median__imputed,0.0,0.0,3651,,True
+conductivity_us_cm_rt_rolling_15min_range,conductivity_us_cm_rt_rolling_15min_range__imputed,0.0,0.0,5008,correlation > 0.995 on train,False
+conductivity_us_cm_rt_rolling_30min_mean,conductivity_us_cm_rt_rolling_30min_mean__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_rolling_30min_std,conductivity_us_cm_rt_rolling_30min_std__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_rolling_30min_min,conductivity_us_cm_rt_rolling_30min_min__imputed,0.0,0.0,1751,,True
+conductivity_us_cm_rt_rolling_30min_max,conductivity_us_cm_rt_rolling_30min_max__imputed,0.0,0.0,1767,,True
+conductivity_us_cm_rt_rolling_30min_median,conductivity_us_cm_rt_rolling_30min_median__imputed,0.0,0.0,4047,,True
+conductivity_us_cm_rt_rolling_30min_range,conductivity_us_cm_rt_rolling_30min_range__imputed,0.0,0.0,3222,,True
+conductivity_us_cm_rt_rolling_60min_mean,conductivity_us_cm_rt_rolling_60min_mean__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_rolling_60min_std,conductivity_us_cm_rt_rolling_60min_std__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_rolling_60min_min,conductivity_us_cm_rt_rolling_60min_min__imputed,0.0,0.0,991,,True
+conductivity_us_cm_rt_rolling_60min_max,conductivity_us_cm_rt_rolling_60min_max__imputed,0.0,0.0,985,,True
+conductivity_us_cm_rt_rolling_60min_median,conductivity_us_cm_rt_rolling_60min_median__imputed,0.0,0.0,3095,,True
+conductivity_us_cm_rt_rolling_60min_range,conductivity_us_cm_rt_rolling_60min_range__imputed,0.0,0.0,1875,,True
+conductivity_us_cm_rt_rolling_120min_mean,conductivity_us_cm_rt_rolling_120min_mean__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_rolling_120min_std,conductivity_us_cm_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_rolling_120min_min,conductivity_us_cm_rt_rolling_120min_min__imputed,0.0,0.0,584,,True
+conductivity_us_cm_rt_rolling_120min_max,conductivity_us_cm_rt_rolling_120min_max__imputed,0.0,0.0,605,,True
+conductivity_us_cm_rt_rolling_120min_median,conductivity_us_cm_rt_rolling_120min_median__imputed,0.0,0.0,2805,,True
+conductivity_us_cm_rt_rolling_120min_range,conductivity_us_cm_rt_rolling_120min_range__imputed,0.0,0.0,1145,,True
+conductivity_us_cm_rt_delta_5min,conductivity_us_cm_rt_delta_5min__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_delta_15min,conductivity_us_cm_rt_delta_15min__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_delta_30min,conductivity_us_cm_rt_delta_30min__imputed,0.0,0.0,6022,,True
+conductivity_us_cm_rt_pct_change_30min,conductivity_us_cm_rt_pct_change_30min__imputed,0.0,0.0,6022,correlation > 0.995 on train,False
+conductivity_us_cm_rt_rolling_30min_slope,conductivity_us_cm_rt_rolling_30min_slope__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_lag_5min,dissolved_oxygen_mg_l_rt_lag_5min__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_lag_15min,dissolved_oxygen_mg_l_rt_lag_15min__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_lag_30min,dissolved_oxygen_mg_l_rt_lag_30min__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_lag_60min,dissolved_oxygen_mg_l_rt_lag_60min__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_lag_120min,dissolved_oxygen_mg_l_rt_lag_120min__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_rolling_15min_mean,dissolved_oxygen_mg_l_rt_rolling_15min_mean__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_rolling_15min_std,dissolved_oxygen_mg_l_rt_rolling_15min_std__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_rolling_15min_min,dissolved_oxygen_mg_l_rt_rolling_15min_min__imputed,0.0,0.0,3039,,True
+dissolved_oxygen_mg_l_rt_rolling_15min_max,dissolved_oxygen_mg_l_rt_rolling_15min_max__imputed,0.0,0.0,3009,,True
+dissolved_oxygen_mg_l_rt_rolling_15min_median,dissolved_oxygen_mg_l_rt_rolling_15min_median__imputed,0.0,0.0,3619,,True
+dissolved_oxygen_mg_l_rt_rolling_15min_range,dissolved_oxygen_mg_l_rt_rolling_15min_range__imputed,0.0,0.0,5031,correlation > 0.995 on train,False
+dissolved_oxygen_mg_l_rt_rolling_30min_mean,dissolved_oxygen_mg_l_rt_rolling_30min_mean__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_rolling_30min_std,dissolved_oxygen_mg_l_rt_rolling_30min_std__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_rolling_30min_min,dissolved_oxygen_mg_l_rt_rolling_30min_min__imputed,0.0,0.0,1747,,True
+dissolved_oxygen_mg_l_rt_rolling_30min_max,dissolved_oxygen_mg_l_rt_rolling_30min_max__imputed,0.0,0.0,1716,,True
+dissolved_oxygen_mg_l_rt_rolling_30min_median,dissolved_oxygen_mg_l_rt_rolling_30min_median__imputed,0.0,0.0,4009,,True
+dissolved_oxygen_mg_l_rt_rolling_30min_range,dissolved_oxygen_mg_l_rt_rolling_30min_range__imputed,0.0,0.0,3171,,True
+dissolved_oxygen_mg_l_rt_rolling_60min_mean,dissolved_oxygen_mg_l_rt_rolling_60min_mean__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_rolling_60min_std,dissolved_oxygen_mg_l_rt_rolling_60min_std__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_rolling_60min_min,dissolved_oxygen_mg_l_rt_rolling_60min_min__imputed,0.0,0.0,975,,True
+dissolved_oxygen_mg_l_rt_rolling_60min_max,dissolved_oxygen_mg_l_rt_rolling_60min_max__imputed,0.0,0.0,963,,True
+dissolved_oxygen_mg_l_rt_rolling_60min_median,dissolved_oxygen_mg_l_rt_rolling_60min_median__imputed,0.0,0.0,3057,,True
+dissolved_oxygen_mg_l_rt_rolling_60min_range,dissolved_oxygen_mg_l_rt_rolling_60min_range__imputed,0.0,0.0,1864,,True
+dissolved_oxygen_mg_l_rt_rolling_120min_mean,dissolved_oxygen_mg_l_rt_rolling_120min_mean__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_rolling_120min_std,dissolved_oxygen_mg_l_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_rolling_120min_min,dissolved_oxygen_mg_l_rt_rolling_120min_min__imputed,0.0,0.0,523,,True
+dissolved_oxygen_mg_l_rt_rolling_120min_max,dissolved_oxygen_mg_l_rt_rolling_120min_max__imputed,0.0,0.0,547,,True
+dissolved_oxygen_mg_l_rt_rolling_120min_median,dissolved_oxygen_mg_l_rt_rolling_120min_median__imputed,0.0,0.0,2462,,True
+dissolved_oxygen_mg_l_rt_rolling_120min_range,dissolved_oxygen_mg_l_rt_rolling_120min_range__imputed,0.0,0.0,1043,,True
+dissolved_oxygen_mg_l_rt_delta_5min,dissolved_oxygen_mg_l_rt_delta_5min__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_delta_15min,dissolved_oxygen_mg_l_rt_delta_15min__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_delta_30min,dissolved_oxygen_mg_l_rt_delta_30min__imputed,0.0,0.0,6022,,True
+dissolved_oxygen_mg_l_rt_pct_change_30min,dissolved_oxygen_mg_l_rt_pct_change_30min__imputed,0.0,0.0,6022,correlation > 0.995 on train,False
+dissolved_oxygen_mg_l_rt_rolling_30min_slope,dissolved_oxygen_mg_l_rt_rolling_30min_slope__imputed,0.0,0.0,6022,,True
+orp_mv_rt_lag_5min,orp_mv_rt_lag_5min__imputed,0.0,0.0,6022,,True
+orp_mv_rt_lag_15min,orp_mv_rt_lag_15min__imputed,0.0,0.0,6022,,True
+orp_mv_rt_lag_30min,orp_mv_rt_lag_30min__imputed,0.0,0.0,6022,,True
+orp_mv_rt_lag_60min,orp_mv_rt_lag_60min__imputed,0.0,0.0,6022,,True
+orp_mv_rt_lag_120min,orp_mv_rt_lag_120min__imputed,0.0,0.0,6022,,True
+orp_mv_rt_rolling_15min_mean,orp_mv_rt_rolling_15min_mean__imputed,0.0,0.0,6022,,True
+orp_mv_rt_rolling_15min_std,orp_mv_rt_rolling_15min_std__imputed,0.0,0.0,6022,,True
+orp_mv_rt_rolling_15min_min,orp_mv_rt_rolling_15min_min__imputed,0.0,0.0,3010,,True
+orp_mv_rt_rolling_15min_max,orp_mv_rt_rolling_15min_max__imputed,0.0,0.0,3022,,True
+orp_mv_rt_rolling_15min_median,orp_mv_rt_rolling_15min_median__imputed,0.0,0.0,3614,,True
+orp_mv_rt_rolling_15min_range,orp_mv_rt_rolling_15min_range__imputed,0.0,0.0,5035,correlation > 0.995 on train,False
+orp_mv_rt_rolling_30min_mean,orp_mv_rt_rolling_30min_mean__imputed,0.0,0.0,6022,,True
+orp_mv_rt_rolling_30min_std,orp_mv_rt_rolling_30min_std__imputed,0.0,0.0,6022,,True
+orp_mv_rt_rolling_30min_min,orp_mv_rt_rolling_30min_min__imputed,0.0,0.0,1764,,True
+orp_mv_rt_rolling_30min_max,orp_mv_rt_rolling_30min_max__imputed,0.0,0.0,1750,,True
+orp_mv_rt_rolling_30min_median,orp_mv_rt_rolling_30min_median__imputed,0.0,0.0,4028,,True
+orp_mv_rt_rolling_30min_range,orp_mv_rt_rolling_30min_range__imputed,0.0,0.0,3210,,True
+orp_mv_rt_rolling_60min_mean,orp_mv_rt_rolling_60min_mean__imputed,0.0,0.0,6022,,True
+orp_mv_rt_rolling_60min_std,orp_mv_rt_rolling_60min_std__imputed,0.0,0.0,6022,,True
+orp_mv_rt_rolling_60min_min,orp_mv_rt_rolling_60min_min__imputed,0.0,0.0,940,,True
+orp_mv_rt_rolling_60min_max,orp_mv_rt_rolling_60min_max__imputed,0.0,0.0,958,,True
+orp_mv_rt_rolling_60min_median,orp_mv_rt_rolling_60min_median__imputed,0.0,0.0,3001,,True
+orp_mv_rt_rolling_60min_range,orp_mv_rt_rolling_60min_range__imputed,0.0,0.0,1809,,True
+orp_mv_rt_rolling_120min_mean,orp_mv_rt_rolling_120min_mean__imputed,0.0,0.0,6022,,True
+orp_mv_rt_rolling_120min_std,orp_mv_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+orp_mv_rt_rolling_120min_min,orp_mv_rt_rolling_120min_min__imputed,0.0,0.0,530,,True
+orp_mv_rt_rolling_120min_max,orp_mv_rt_rolling_120min_max__imputed,0.0,0.0,535,,True
+orp_mv_rt_rolling_120min_median,orp_mv_rt_rolling_120min_median__imputed,0.0,0.0,2474,,True
+orp_mv_rt_rolling_120min_range,orp_mv_rt_rolling_120min_range__imputed,0.0,0.0,1032,,True
+orp_mv_rt_delta_5min,orp_mv_rt_delta_5min__imputed,0.0,0.0,6022,,True
+orp_mv_rt_delta_15min,orp_mv_rt_delta_15min__imputed,0.0,0.0,6022,,True
+orp_mv_rt_delta_30min,orp_mv_rt_delta_30min__imputed,0.0,0.0,6022,,True
+orp_mv_rt_pct_change_30min,orp_mv_rt_pct_change_30min__imputed,0.0,0.0,6022,,True
+orp_mv_rt_rolling_30min_slope,orp_mv_rt_rolling_30min_slope__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_lag_5min,ammonia_mg_l_rt_lag_5min__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_lag_15min,ammonia_mg_l_rt_lag_15min__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_lag_30min,ammonia_mg_l_rt_lag_30min__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_lag_60min,ammonia_mg_l_rt_lag_60min__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_lag_120min,ammonia_mg_l_rt_lag_120min__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_rolling_15min_mean,ammonia_mg_l_rt_rolling_15min_mean__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_rolling_15min_std,ammonia_mg_l_rt_rolling_15min_std__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_rolling_15min_min,ammonia_mg_l_rt_rolling_15min_min__imputed,0.0,0.0,3050,,True
+ammonia_mg_l_rt_rolling_15min_max,ammonia_mg_l_rt_rolling_15min_max__imputed,0.0,0.0,3026,,True
+ammonia_mg_l_rt_rolling_15min_median,ammonia_mg_l_rt_rolling_15min_median__imputed,0.0,0.0,3647,,True
+ammonia_mg_l_rt_rolling_15min_range,ammonia_mg_l_rt_rolling_15min_range__imputed,0.0,0.0,5035,correlation > 0.995 on train,False
+ammonia_mg_l_rt_rolling_30min_mean,ammonia_mg_l_rt_rolling_30min_mean__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_rolling_30min_std,ammonia_mg_l_rt_rolling_30min_std__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_rolling_30min_min,ammonia_mg_l_rt_rolling_30min_min__imputed,0.0,0.0,1749,,True
+ammonia_mg_l_rt_rolling_30min_max,ammonia_mg_l_rt_rolling_30min_max__imputed,0.0,0.0,1750,,True
+ammonia_mg_l_rt_rolling_30min_median,ammonia_mg_l_rt_rolling_30min_median__imputed,0.0,0.0,4008,,True
+ammonia_mg_l_rt_rolling_30min_range,ammonia_mg_l_rt_rolling_30min_range__imputed,0.0,0.0,3182,,True
+ammonia_mg_l_rt_rolling_60min_mean,ammonia_mg_l_rt_rolling_60min_mean__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_rolling_60min_std,ammonia_mg_l_rt_rolling_60min_std__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_rolling_60min_min,ammonia_mg_l_rt_rolling_60min_min__imputed,0.0,0.0,978,,True
+ammonia_mg_l_rt_rolling_60min_max,ammonia_mg_l_rt_rolling_60min_max__imputed,0.0,0.0,989,,True
+ammonia_mg_l_rt_rolling_60min_median,ammonia_mg_l_rt_rolling_60min_median__imputed,0.0,0.0,3048,,True
+ammonia_mg_l_rt_rolling_60min_range,ammonia_mg_l_rt_rolling_60min_range__imputed,0.0,0.0,1870,,True
+ammonia_mg_l_rt_rolling_120min_mean,ammonia_mg_l_rt_rolling_120min_mean__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_rolling_120min_std,ammonia_mg_l_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_rolling_120min_min,ammonia_mg_l_rt_rolling_120min_min__imputed,0.0,0.0,558,,True
+ammonia_mg_l_rt_rolling_120min_max,ammonia_mg_l_rt_rolling_120min_max__imputed,0.0,0.0,577,,True
+ammonia_mg_l_rt_rolling_120min_median,ammonia_mg_l_rt_rolling_120min_median__imputed,0.0,0.0,2490,,True
+ammonia_mg_l_rt_rolling_120min_range,ammonia_mg_l_rt_rolling_120min_range__imputed,0.0,0.0,1103,,True
+ammonia_mg_l_rt_delta_5min,ammonia_mg_l_rt_delta_5min__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_delta_15min,ammonia_mg_l_rt_delta_15min__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_delta_30min,ammonia_mg_l_rt_delta_30min__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_pct_change_30min,ammonia_mg_l_rt_pct_change_30min__imputed,0.0,0.0,6022,,True
+ammonia_mg_l_rt_rolling_30min_slope,ammonia_mg_l_rt_rolling_30min_slope__imputed,0.0,0.0,6022,,True
+uv254_abs_rt_lag_5min,uv254_abs_rt_lag_5min__imputed,0.0814,0.0,6022,,True
+uv254_abs_rt_lag_15min,uv254_abs_rt_lag_15min__imputed,0.0814,0.0,6022,,True
+uv254_abs_rt_lag_30min,uv254_abs_rt_lag_30min__imputed,0.0814,0.0,6022,,True
+uv254_abs_rt_lag_60min,uv254_abs_rt_lag_60min__imputed,0.0814,0.0,6022,,True
+uv254_abs_rt_lag_120min,uv254_abs_rt_lag_120min__imputed,0.0814,0.0,6022,,True
+uv254_abs_rt_rolling_15min_mean,uv254_abs_rt_rolling_15min_mean__imputed,0.0814,0.0,6022,,True
+uv254_abs_rt_rolling_15min_std,uv254_abs_rt_rolling_15min_std__imputed,0.0814,0.0,6022,,True
+uv254_abs_rt_rolling_15min_min,uv254_abs_rt_rolling_15min_min__imputed,0.0814,0.0,3023,,True
+uv254_abs_rt_rolling_15min_max,uv254_abs_rt_rolling_15min_max__imputed,0.0814,0.0,3016,,True
+uv254_abs_rt_rolling_15min_median,uv254_abs_rt_rolling_15min_median__imputed,0.0814,0.0,3632,,True
+uv254_abs_rt_rolling_15min_range,uv254_abs_rt_rolling_15min_range__imputed,0.0814,0.0,5027,correlation > 0.995 on train,False
+uv254_abs_rt_rolling_30min_mean,uv254_abs_rt_rolling_30min_mean__imputed,0.0697,0.0,6022,,True
+uv254_abs_rt_rolling_30min_std,uv254_abs_rt_rolling_30min_std__imputed,0.0697,0.0,6022,,True
+uv254_abs_rt_rolling_30min_min,uv254_abs_rt_rolling_30min_min__imputed,0.0697,0.0,1767,,True
+uv254_abs_rt_rolling_30min_max,uv254_abs_rt_rolling_30min_max__imputed,0.0697,0.0,1767,,True
+uv254_abs_rt_rolling_30min_median,uv254_abs_rt_rolling_30min_median__imputed,0.0697,0.0,4025,,True
+uv254_abs_rt_rolling_30min_range,uv254_abs_rt_rolling_30min_range__imputed,0.0697,0.0,3217,,True
+uv254_abs_rt_rolling_60min_mean,uv254_abs_rt_rolling_60min_mean__imputed,0.0697,0.0,6022,,True
+uv254_abs_rt_rolling_60min_std,uv254_abs_rt_rolling_60min_std__imputed,0.0697,0.0,6022,,True
+uv254_abs_rt_rolling_60min_min,uv254_abs_rt_rolling_60min_min__imputed,0.0697,0.0,1016,,True
+uv254_abs_rt_rolling_60min_max,uv254_abs_rt_rolling_60min_max__imputed,0.0697,0.0,974,,True
+uv254_abs_rt_rolling_60min_median,uv254_abs_rt_rolling_60min_median__imputed,0.0697,0.0,3082,,True
+uv254_abs_rt_rolling_60min_range,uv254_abs_rt_rolling_60min_range__imputed,0.0697,0.0,1899,,True
+uv254_abs_rt_rolling_120min_mean,uv254_abs_rt_rolling_120min_mean__imputed,0.0,0.0,6022,,True
+uv254_abs_rt_rolling_120min_std,uv254_abs_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+uv254_abs_rt_rolling_120min_min,uv254_abs_rt_rolling_120min_min__imputed,0.0,0.0,620,,True
+uv254_abs_rt_rolling_120min_max,uv254_abs_rt_rolling_120min_max__imputed,0.0,0.0,586,,True
+uv254_abs_rt_rolling_120min_median,uv254_abs_rt_rolling_120min_median__imputed,0.0,0.0,2641,,True
+uv254_abs_rt_rolling_120min_range,uv254_abs_rt_rolling_120min_range__imputed,0.0,0.0,1173,,True
+uv254_abs_rt_delta_5min,uv254_abs_rt_delta_5min__imputed,0.093,0.0,6022,,True
+uv254_abs_rt_delta_15min,uv254_abs_rt_delta_15min__imputed,0.1162,0.0,6022,,True
+uv254_abs_rt_delta_30min,uv254_abs_rt_delta_30min__imputed,0.1511,0.0,6022,,True
+uv254_abs_rt_pct_change_30min,uv254_abs_rt_pct_change_30min__imputed,0.1511,0.0,6022,,True
+uv254_abs_rt_rolling_30min_slope,uv254_abs_rt_rolling_30min_slope__imputed,0.093,0.0,6022,,True
+tss_mg_l_rt_lag_5min,tss_mg_l_rt_lag_5min__imputed,0.0814,0.0,6022,,True
+tss_mg_l_rt_lag_15min,tss_mg_l_rt_lag_15min__imputed,0.0814,0.0,6022,,True
+tss_mg_l_rt_lag_30min,tss_mg_l_rt_lag_30min__imputed,0.0814,0.0,6022,,True
+tss_mg_l_rt_lag_60min,tss_mg_l_rt_lag_60min__imputed,0.0814,0.0,6022,,True
+tss_mg_l_rt_lag_120min,tss_mg_l_rt_lag_120min__imputed,0.0814,0.0,6022,,True
+tss_mg_l_rt_rolling_15min_mean,tss_mg_l_rt_rolling_15min_mean__imputed,0.0814,0.0,6022,,True
+tss_mg_l_rt_rolling_15min_std,tss_mg_l_rt_rolling_15min_std__imputed,0.0814,0.0,6022,,True
+tss_mg_l_rt_rolling_15min_min,tss_mg_l_rt_rolling_15min_min__imputed,0.0814,0.0,3011,,True
+tss_mg_l_rt_rolling_15min_max,tss_mg_l_rt_rolling_15min_max__imputed,0.0814,0.0,3024,,True
+tss_mg_l_rt_rolling_15min_median,tss_mg_l_rt_rolling_15min_median__imputed,0.0814,0.0,3648,,True
+tss_mg_l_rt_rolling_15min_range,tss_mg_l_rt_rolling_15min_range__imputed,0.0814,0.0,5011,correlation > 0.995 on train,False
+tss_mg_l_rt_rolling_30min_mean,tss_mg_l_rt_rolling_30min_mean__imputed,0.0697,0.0,6022,,True
+tss_mg_l_rt_rolling_30min_std,tss_mg_l_rt_rolling_30min_std__imputed,0.0697,0.0,6022,,True
+tss_mg_l_rt_rolling_30min_min,tss_mg_l_rt_rolling_30min_min__imputed,0.0697,0.0,1779,,True
+tss_mg_l_rt_rolling_30min_max,tss_mg_l_rt_rolling_30min_max__imputed,0.0697,0.0,1783,,True
+tss_mg_l_rt_rolling_30min_median,tss_mg_l_rt_rolling_30min_median__imputed,0.0697,0.0,3998,,True
+tss_mg_l_rt_rolling_30min_range,tss_mg_l_rt_rolling_30min_range__imputed,0.0697,0.0,3238,,True
+tss_mg_l_rt_rolling_60min_mean,tss_mg_l_rt_rolling_60min_mean__imputed,0.0697,0.0,6022,correlation > 0.995 on train,False
+tss_mg_l_rt_rolling_60min_std,tss_mg_l_rt_rolling_60min_std__imputed,0.0697,0.0,6022,,True
+tss_mg_l_rt_rolling_60min_min,tss_mg_l_rt_rolling_60min_min__imputed,0.0697,0.0,1002,,True
+tss_mg_l_rt_rolling_60min_max,tss_mg_l_rt_rolling_60min_max__imputed,0.0697,0.0,1017,,True
+tss_mg_l_rt_rolling_60min_median,tss_mg_l_rt_rolling_60min_median__imputed,0.0697,0.0,3107,,True
+tss_mg_l_rt_rolling_60min_range,tss_mg_l_rt_rolling_60min_range__imputed,0.0697,0.0,1941,,True
+tss_mg_l_rt_rolling_120min_mean,tss_mg_l_rt_rolling_120min_mean__imputed,0.0,0.0,6022,correlation > 0.995 on train,False
+tss_mg_l_rt_rolling_120min_std,tss_mg_l_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+tss_mg_l_rt_rolling_120min_min,tss_mg_l_rt_rolling_120min_min__imputed,0.0,0.0,577,,True
+tss_mg_l_rt_rolling_120min_max,tss_mg_l_rt_rolling_120min_max__imputed,0.0,0.0,626,,True
+tss_mg_l_rt_rolling_120min_median,tss_mg_l_rt_rolling_120min_median__imputed,0.0,0.0,2632,,True
+tss_mg_l_rt_rolling_120min_range,tss_mg_l_rt_rolling_120min_range__imputed,0.0,0.0,1161,,True
+tss_mg_l_rt_delta_5min,tss_mg_l_rt_delta_5min__imputed,0.093,0.0,6022,,True
+tss_mg_l_rt_delta_15min,tss_mg_l_rt_delta_15min__imputed,0.1162,0.0,6022,,True
+tss_mg_l_rt_delta_30min,tss_mg_l_rt_delta_30min__imputed,0.1511,0.0,6022,,True
+tss_mg_l_rt_pct_change_30min,tss_mg_l_rt_pct_change_30min__imputed,0.1511,0.0,6022,,True
+tss_mg_l_rt_rolling_30min_slope,tss_mg_l_rt_rolling_30min_slope__imputed,0.093,0.0,6022,,True
+cod_mg_l_rt_lag_5min,cod_mg_l_rt_lag_5min__imputed,0.0814,0.0,6022,,True
+cod_mg_l_rt_lag_15min,cod_mg_l_rt_lag_15min__imputed,0.0814,0.0,6022,,True
+cod_mg_l_rt_lag_30min,cod_mg_l_rt_lag_30min__imputed,0.0814,0.0,6022,,True
+cod_mg_l_rt_lag_60min,cod_mg_l_rt_lag_60min__imputed,0.0814,0.0,6022,,True
+cod_mg_l_rt_lag_120min,cod_mg_l_rt_lag_120min__imputed,0.0814,0.0,6022,,True
+cod_mg_l_rt_rolling_15min_mean,cod_mg_l_rt_rolling_15min_mean__imputed,0.0814,0.0,6022,,True
+cod_mg_l_rt_rolling_15min_std,cod_mg_l_rt_rolling_15min_std__imputed,0.0814,0.0,6022,,True
+cod_mg_l_rt_rolling_15min_min,cod_mg_l_rt_rolling_15min_min__imputed,0.0814,0.0,3018,,True
+cod_mg_l_rt_rolling_15min_max,cod_mg_l_rt_rolling_15min_max__imputed,0.0814,0.0,3042,,True
+cod_mg_l_rt_rolling_15min_median,cod_mg_l_rt_rolling_15min_median__imputed,0.0814,0.0,3636,,True
+cod_mg_l_rt_rolling_15min_range,cod_mg_l_rt_rolling_15min_range__imputed,0.0814,0.0,5012,correlation > 0.995 on train,False
+cod_mg_l_rt_rolling_30min_mean,cod_mg_l_rt_rolling_30min_mean__imputed,0.0697,0.0,6022,,True
+cod_mg_l_rt_rolling_30min_std,cod_mg_l_rt_rolling_30min_std__imputed,0.0697,0.0,6022,,True
+cod_mg_l_rt_rolling_30min_min,cod_mg_l_rt_rolling_30min_min__imputed,0.0697,0.0,1746,,True
+cod_mg_l_rt_rolling_30min_max,cod_mg_l_rt_rolling_30min_max__imputed,0.0697,0.0,1739,,True
+cod_mg_l_rt_rolling_30min_median,cod_mg_l_rt_rolling_30min_median__imputed,0.0697,0.0,4030,,True
+cod_mg_l_rt_rolling_30min_range,cod_mg_l_rt_rolling_30min_range__imputed,0.0697,0.0,3187,,True
+cod_mg_l_rt_rolling_60min_mean,cod_mg_l_rt_rolling_60min_mean__imputed,0.0697,0.0,6022,,True
+cod_mg_l_rt_rolling_60min_std,cod_mg_l_rt_rolling_60min_std__imputed,0.0697,0.0,6022,,True
+cod_mg_l_rt_rolling_60min_min,cod_mg_l_rt_rolling_60min_min__imputed,0.0697,0.0,1004,,True
+cod_mg_l_rt_rolling_60min_max,cod_mg_l_rt_rolling_60min_max__imputed,0.0697,0.0,985,,True
+cod_mg_l_rt_rolling_60min_median,cod_mg_l_rt_rolling_60min_median__imputed,0.0697,0.0,3128,,True
+cod_mg_l_rt_rolling_60min_range,cod_mg_l_rt_rolling_60min_range__imputed,0.0697,0.0,1893,,True
+cod_mg_l_rt_rolling_120min_mean,cod_mg_l_rt_rolling_120min_mean__imputed,0.0,0.0,6022,,True
+cod_mg_l_rt_rolling_120min_std,cod_mg_l_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+cod_mg_l_rt_rolling_120min_min,cod_mg_l_rt_rolling_120min_min__imputed,0.0,0.0,560,,True
+cod_mg_l_rt_rolling_120min_max,cod_mg_l_rt_rolling_120min_max__imputed,0.0,0.0,578,,True
+cod_mg_l_rt_rolling_120min_median,cod_mg_l_rt_rolling_120min_median__imputed,0.0,0.0,2524,,True
+cod_mg_l_rt_rolling_120min_range,cod_mg_l_rt_rolling_120min_range__imputed,0.0,0.0,1098,,True
+cod_mg_l_rt_delta_5min,cod_mg_l_rt_delta_5min__imputed,0.093,0.0,6022,,True
+cod_mg_l_rt_delta_15min,cod_mg_l_rt_delta_15min__imputed,0.1162,0.0,6022,,True
+cod_mg_l_rt_delta_30min,cod_mg_l_rt_delta_30min__imputed,0.1511,0.0,6022,,True
+cod_mg_l_rt_pct_change_30min,cod_mg_l_rt_pct_change_30min__imputed,0.1511,0.0,6022,,True
+cod_mg_l_rt_rolling_30min_slope,cod_mg_l_rt_rolling_30min_slope__imputed,0.093,0.0,6022,,True
+bod_mg_l_rt_lag_5min,bod_mg_l_rt_lag_5min__imputed,0.0814,0.0,6022,,True
+bod_mg_l_rt_lag_15min,bod_mg_l_rt_lag_15min__imputed,0.0814,0.0,6022,,True
+bod_mg_l_rt_lag_30min,bod_mg_l_rt_lag_30min__imputed,0.0814,0.0,6022,,True
+bod_mg_l_rt_lag_60min,bod_mg_l_rt_lag_60min__imputed,0.0814,0.0,6022,,True
+bod_mg_l_rt_lag_120min,bod_mg_l_rt_lag_120min__imputed,0.0814,0.0,6022,,True
+bod_mg_l_rt_rolling_15min_mean,bod_mg_l_rt_rolling_15min_mean__imputed,0.0814,0.0,6022,,True
+bod_mg_l_rt_rolling_15min_std,bod_mg_l_rt_rolling_15min_std__imputed,0.0814,0.0,6022,,True
+bod_mg_l_rt_rolling_15min_min,bod_mg_l_rt_rolling_15min_min__imputed,0.0814,0.0,3041,,True
+bod_mg_l_rt_rolling_15min_max,bod_mg_l_rt_rolling_15min_max__imputed,0.0814,0.0,3048,,True
+bod_mg_l_rt_rolling_15min_median,bod_mg_l_rt_rolling_15min_median__imputed,0.0814,0.0,3633,,True
+bod_mg_l_rt_rolling_15min_range,bod_mg_l_rt_rolling_15min_range__imputed,0.0814,0.0,5044,correlation > 0.995 on train,False
+bod_mg_l_rt_rolling_30min_mean,bod_mg_l_rt_rolling_30min_mean__imputed,0.0697,0.0,6022,,True
+bod_mg_l_rt_rolling_30min_std,bod_mg_l_rt_rolling_30min_std__imputed,0.0697,0.0,6022,,True
+bod_mg_l_rt_rolling_30min_min,bod_mg_l_rt_rolling_30min_min__imputed,0.0697,0.0,1747,,True
+bod_mg_l_rt_rolling_30min_max,bod_mg_l_rt_rolling_30min_max__imputed,0.0697,0.0,1733,,True
+bod_mg_l_rt_rolling_30min_median,bod_mg_l_rt_rolling_30min_median__imputed,0.0697,0.0,4030,,True
+bod_mg_l_rt_rolling_30min_range,bod_mg_l_rt_rolling_30min_range__imputed,0.0697,0.0,3189,,True
+bod_mg_l_rt_rolling_60min_mean,bod_mg_l_rt_rolling_60min_mean__imputed,0.0697,0.0,6022,,True
+bod_mg_l_rt_rolling_60min_std,bod_mg_l_rt_rolling_60min_std__imputed,0.0697,0.0,6022,,True
+bod_mg_l_rt_rolling_60min_min,bod_mg_l_rt_rolling_60min_min__imputed,0.0697,0.0,999,,True
+bod_mg_l_rt_rolling_60min_max,bod_mg_l_rt_rolling_60min_max__imputed,0.0697,0.0,979,,True
+bod_mg_l_rt_rolling_60min_median,bod_mg_l_rt_rolling_60min_median__imputed,0.0697,0.0,3060,,True
+bod_mg_l_rt_rolling_60min_range,bod_mg_l_rt_rolling_60min_range__imputed,0.0697,0.0,1876,,True
+bod_mg_l_rt_rolling_120min_mean,bod_mg_l_rt_rolling_120min_mean__imputed,0.0,0.0,6022,,True
+bod_mg_l_rt_rolling_120min_std,bod_mg_l_rt_rolling_120min_std__imputed,0.0,0.0,6022,,True
+bod_mg_l_rt_rolling_120min_min,bod_mg_l_rt_rolling_120min_min__imputed,0.0,0.0,553,,True
+bod_mg_l_rt_rolling_120min_max,bod_mg_l_rt_rolling_120min_max__imputed,0.0,0.0,572,,True
+bod_mg_l_rt_rolling_120min_median,bod_mg_l_rt_rolling_120min_median__imputed,0.0,0.0,2477,,True
+bod_mg_l_rt_rolling_120min_range,bod_mg_l_rt_rolling_120min_range__imputed,0.0,0.0,1091,,True
+bod_mg_l_rt_delta_5min,bod_mg_l_rt_delta_5min__imputed,0.093,0.0,6022,,True
+bod_mg_l_rt_delta_15min,bod_mg_l_rt_delta_15min__imputed,0.1162,0.0,6022,,True
+bod_mg_l_rt_delta_30min,bod_mg_l_rt_delta_30min__imputed,0.1511,0.0,6022,,True
+bod_mg_l_rt_pct_change_30min,bod_mg_l_rt_pct_change_30min__imputed,0.1511,0.0,6022,,True
+bod_mg_l_rt_rolling_30min_slope,bod_mg_l_rt_rolling_30min_slope__imputed,0.093,0.0,6022,,True
+ph_lower_margin_rt,ph_lower_margin_rt__imputed,0.0814,0.0,6022,correlation > 0.995 on train,False
+ph_upper_margin_rt,ph_upper_margin_rt__imputed,0.0814,0.0,6022,correlation > 0.995 on train,False
+temperature_margin_rt,temperature_margin_rt__imputed,0.0,0.0,6022,correlation > 0.995 on train,False
+cod_margin_rt,cod_margin_rt__imputed,0.0814,0.0,6022,correlation > 0.995 on train,False
+bod_margin_rt,bod_margin_rt__imputed,0.0814,0.0,6022,correlation > 0.995 on train,False
+tss_margin_rt,tss_margin_rt__imputed,0.0814,0.0,6022,correlation > 0.995 on train,False
+ammonia_margin_rt,ammonia_margin_rt__imputed,0.0,0.0,6022,correlation > 0.995 on train,False
+ph_lower_margin_pct_rt,ph_lower_margin_pct_rt__imputed,0.0814,0.0,6022,correlation > 0.995 on train,False
+ph_upper_margin_pct_rt,ph_upper_margin_pct_rt__imputed,0.0814,0.0,6022,correlation > 0.995 on train,False
+temperature_margin_pct_rt,temperature_margin_pct_rt__imputed,0.0,0.0,6022,correlation > 0.995 on train,False
+cod_margin_pct_rt,cod_margin_pct_rt__imputed,0.0814,0.0,6022,correlation > 0.995 on train,False
+bod_margin_pct_rt,bod_margin_pct_rt__imputed,0.0814,0.0,6022,correlation > 0.995 on train,False
+tss_margin_pct_rt,tss_margin_pct_rt__imputed,0.0814,0.0,6022,correlation > 0.995 on train,False
+ammonia_margin_pct_rt,ammonia_margin_pct_rt__imputed,0.0,0.0,6022,correlation > 0.995 on train,False
+min_margin_pct_rt,min_margin_pct_rt__imputed,0.0,0.0,6022,,True
+cod_load_rt,cod_load_rt__imputed,0.0814,0.0,6022,,True
+bod_load_rt,bod_load_rt__imputed,0.0814,0.0,6022,,True
+tss_load_rt,tss_load_rt__imputed,0.0814,0.0,6022,,True
+ammonia_load_rt,ammonia_load_rt__imputed,0.0,0.0,6022,,True
+bod_cod_ratio_rt,bod_cod_ratio_rt__imputed,0.0814,0.0,6022,,True
+tss_turbidity_ratio_rt,tss_turbidity_ratio_rt__imputed,0.0814,0.0,6022,,True
+cod_uv254_ratio_rt,cod_uv254_ratio_rt__imputed,0.0814,0.0,6022,,True
+do_cod_ratio_rt,do_cod_ratio_rt__imputed,0.0814,0.0,6022,,True
+hour,hour__imputed,0.0,0.0,24,,True
+day_of_week,day_of_week__imputed,0.0,0.0,7,,True
+is_weekend,is_weekend__imputed,0.0,0.0,2,,True
+is_working_hour,is_working_hour__imputed,0.0,0.0,2,,True
+sin_hour,sin_hour__imputed,0.0,0.0,21,,True
+cos_hour,cos_hour__imputed,0.0,0.0,22,,True
+sin_day_of_week,sin_day_of_week__imputed,0.0,0.0,7,,True
+cos_day_of_week,cos_day_of_week__imputed,0.0,0.0,7,,True

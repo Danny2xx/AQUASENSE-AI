@@ -1,0 +1,2 @@
+breach_episode_id,breach_start,caught_before_breach,first_alert_time,lead_time_minutes,alerts_before_breach,split,model
+demo-food-processing-plant::breach_0007,2026-05-24 18:10:00,True,2026-05-24 17:45:00,25.0,5,validation,hist_gradient_boosting

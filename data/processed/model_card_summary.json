@@ -1,0 +1,186 @@
+{
+  "model_purpose": "Predict future wastewater compliance breach risk and support early warning alerts.",
+  "regulatory_framing": "Configurable site-specific trade effluent consent / environmental permit limits, not universal legal thresholds.",
+  "data_basis": "Simulated wastewater telemetry plus lab/soft-sensor artifacts in this prototype.",
+  "selected_classifier": "hist_gradient_boosting",
+  "selected_threshold": 0.005623458717126889,
+  "feature_count": 420,
+  "known_limitations": [
+    "Current final test period contains no positive breach windows.",
+    "Production use requires facility-specific sensors, lab results, consent limits, incident records, and calibration logs.",
+    "Model outputs support operator decisioning; deterministic rules remain authoritative for current breach status."
+  ],
+  "validation_summary": {
+    "best_classifier": "hist_gradient_boosting",
+    "best_classifier_threshold": 0.005623458717126889,
+    "best_forecasters": {
+      "target_cod_mg_l_plus_30min": {
+        "model": "random_forest",
+        "validation_mae": 74.97421922056225,
+        "validation_rmse": 96.32879384557026
+      },
+      "target_tss_mg_l_plus_30min": {
+        "model": "xgboost",
+        "validation_mae": 37.59910176116964,
+        "validation_rmse": 48.79244391095795
+      },
+      "target_bod_mg_l_plus_30min": {
+        "model": "random_forest",
+        "validation_mae": 46.81500087402565,
+        "validation_rmse": 59.19185093993724
+      },
+      "target_ammonia_mg_l_plus_30min": {
+        "model": "extra_trees",
+        "validation_mae": 2.3051028100704025,
+        "validation_rmse": 3.0140510880753504
+      },
+      "target_ph_plus_30min": {
+        "model": "extra_trees",
+        "validation_mae": 0.06441219047984617,
+        "validation_rmse": 0.08161447156786514
+      }
+    },
+    "best_anomaly_model": "rule_sensor_quality",
+    "validation_false_alarms_per_day": 0.22325581395348837,
+    "validation_precision": 0.9166666666666666,
+    "validation_recall": 0.9166666666666666,
+    "validation_pr_auc": 0.9141666666666667,
+    "walk_forward_summary": [
+      {
+        "model": "lightgbm",
+        "folds": 4,
+        "mean_pr_auc": 0.8852161139438808,
+        "mean_recall": 0.4337121212121212,
+        "mean_precision": 0.47916666666666663,
+        "mean_f1": 0.45416666666666666,
+        "mean_false_alarms_per_day": 0.20950533462657614
+      },
+      {
+        "model": "hist_gradient_boosting",
+        "folds": 4,
+        "mean_pr_auc": 0.7116031884781886,
+        "mean_recall": 0.4337121212121212,
+        "mean_precision": 0.4083333333333333,
+        "mean_f1": 0.41798941798941797,
+        "mean_false_alarms_per_day": 0.48884578079534435
+      },
+      {
+        "model": "extra_trees",
+        "folds": 4,
+        "mean_pr_auc": 0.6882201132201132,
+        "mean_recall": 0.45833333333333337,
+        "mean_precision": 0.290521978021978,
+        "mean_f1": 0.34102564102564104,
+        "mean_false_alarms_per_day": 1.5363724539282249
+      },
+      {
+        "model": "xgboost",
+        "folds": 4,
+        "mean_pr_auc": 0.6356485697883756,
+        "mean_recall": 0.47916666666666663,
+        "mean_precision": 0.2700892857142857,
+        "mean_f1": 0.3374542124542125,
+        "mean_false_alarms_per_day": 1.6760426770126091
+      },
+      {
+        "model": "random_forest",
+        "folds": 4,
+        "mean_pr_auc": 0.5336441268426562,
+        "mean_recall": 0.4337121212121212,
+        "mean_precision": 0.3416666666666667,
+        "mean_f1": 0.3743279569892473,
+        "mean_false_alarms_per_day": 0.9776915615906887
+      },
+      {
+        "model": "logistic_regression",
+        "folds": 4,
+        "mean_pr_auc": 0.42580415945550903,
+        "mean_recall": 0.20833333333333334,
+        "mean_precision": 0.20833333333333334,
+        "mean_f1": 0.20833333333333334,
+        "mean_false_alarms_per_day": 0.3491755577109602
+      }
+    ],
+    "incident_holdout_summary": [
+      {
+        "model": "random_forest",
+        "holdouts": 6,
+        "mean_pr_auc": 0.777329564430823,
+        "mean_recall": 0.21637426900584797,
+        "mean_precision": 0.27314814814814814,
+        "mean_f1": 0.24126984126984127,
+        "mean_false_alarms_per_day": 4.412698412698412
+      },
+      {
+        "model": "hist_gradient_boosting",
+        "holdouts": 6,
+        "mean_pr_auc": 0.7491717678507085,
+        "mean_recall": 0.28914141414141414,
+        "mean_precision": 0.30277777777777776,
+        "mean_f1": 0.29563492063492064,
+        "mean_false_alarms_per_day": 1.6571428571428573
+      },
+      {
+        "model": "lightgbm",
+        "holdouts": 6,
+        "mean_pr_auc": 0.7255868498554395,
+        "mean_recall": 0.3881578947368421,
+        "mean_precision": 0.3622222222222222,
+        "mean_f1": 0.3525521319638967,
+        "mean_false_alarms_per_day": 17.579084967320263
+      },
+      {
+        "model": "extra_trees",
+        "holdouts": 6,
+        "mean_pr_auc": 0.6966753689399081,
+        "mean_recall": 0.5066454013822436,
+        "mean_precision": 0.5734922756981581,
+        "mean_f1": 0.5362530722942622,
+        "mean_false_alarms_per_day": 5.3238095238095235
+      },
+      {
+        "model": "xgboost",
+        "holdouts": 6,
+        "mean_pr_auc": 0.6325244401003935,
+        "mean_recall": 0.14619883040935672,
+        "mean_precision": 0.3,
+        "mean_f1": 0.18888888888888888,
+        "mean_false_alarms_per_day": 2.630065359477124
+      },
+      {
+        "model": "logistic_regression",
+        "holdouts": 6,
+        "mean_pr_auc": 0.3229707686014285,
+        "mean_recall": 0.1388888888888889,
+        "mean_precision": 0.15151515151515152,
+        "mean_f1": 0.14492753623188406,
+        "mean_false_alarms_per_day": 18.657142857142855
+      }
+    ],
+    "lead_time_summary": [
+      {
+        "model": "hist_gradient_boosting",
+        "split": "validation",
+        "breach_episodes": 1,
+        "caught_before_breach": true,
+        "average_lead_time_minutes": 25.0,
+        "median_lead_time_minutes": 25.0
+      }
+    ],
+    "outputs": {
+      "classification_results": "data\\processed\\model_classification_results.csv",
+      "forecast_results": "data\\processed\\model_forecast_results.csv",
+      "anomaly_results": "data\\processed\\model_anomaly_results.csv",
+      "feature_importance": "data\\processed\\model_feature_importance.csv",
+      "model_card": "data\\processed\\model_card_summary.json",
+      "calibration_results": "data\\processed\\model_calibration_results.csv",
+      "lead_time_results": "data\\processed\\model_lead_time_results.csv",
+      "incident_holdout_results": "data\\processed\\model_incident_holdout_results.csv",
+      "walk_forward_results": "data\\processed\\model_walk_forward_results.csv",
+      "model_selection": "data\\processed\\model_selection_summary.json",
+      "best_model_h5": "services\\ml\\models\\aquasense_best_models.h5",
+      "best_model_joblib": "services\\ml\\models\\aquasense_best_models.joblib"
+    },
+    "h5_note": "The .h5 file stores a pickle/joblib-compatible byte payload and metadata in HDF5. Use the .joblib artifact for normal sklearn loading."
+  }
+}
