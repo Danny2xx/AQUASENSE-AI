@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, ShieldAlert, BellRing, FileText, Activity } from 'lucide-react';
+import { LayoutDashboard, ShieldAlert, BellRing, FileText, Activity, CloudRain } from 'lucide-react';
 import { StatusDot } from './StatusBadge';
 import { ThemeToggle } from './ThemeToggle';
 import { BulletinToast, useBulletins } from './BulletinToast';
@@ -14,6 +14,7 @@ const NAV = [
   { href: '/alerts', label: 'Alerts', icon: BellRing },
   { href: '/reports', label: 'Reports', icon: FileText },
   { href: '/data-quality', label: 'Data Quality', icon: Activity },
+  { href: '/drought', label: 'Drought', icon: CloudRain },
 ];
 
 export function Navigation({ connected }: { connected: boolean }) {

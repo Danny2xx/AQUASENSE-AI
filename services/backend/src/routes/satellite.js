@@ -1,14 +1,24 @@
 import { Router } from 'express';
-import { fetchDroughtData } from '../services/satelliteService.js';
+import { fetchDroughtData, fetchRegionalData } from '../services/satelliteService.js';
 
 const router = Router();
 
-router.get('/drought', async (req, res) => {
+router.get('/drought', async (_req, res) => {
   try {
     const data = await fetchDroughtData();
     res.json(data);
   } catch (e) {
     console.error('[satellite]', e.message);
+    res.status(502).json({ error: e.message });
+  }
+});
+
+router.get('/regional', async (_req, res) => {
+  try {
+    const data = await fetchRegionalData();
+    res.json(data);
+  } catch (e) {
+    console.error('[satellite/regional]', e.message);
     res.status(502).json({ error: e.message });
   }
 });
