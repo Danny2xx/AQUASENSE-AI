@@ -1,11 +1,15 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import { initStream, getBuffer, getNextReading } from './stream/csvStream.js';
 import { predictFull, healthCheck } from './services/mlClient.js';
 import { evaluateAndSaveAlert } from './services/alertService.js';
+import { sendBulletin } from './services/notificationService.js';
 import facilitiesRouter from './routes/facilities.js';
 import alertsRouter from './routes/alerts.js';
 import reportsRouter from './routes/reports.js';
+import chatRouter from './routes/chat.js';
+import satelliteRouter from './routes/satellite.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -20,6 +24,8 @@ const sseClients = new Set();
 app.use('/api/facilities', facilitiesRouter);
 app.use('/api/alerts', alertsRouter);
 app.use('/api/reports', reportsRouter);
+app.use('/api/chat', chatRouter);
+app.use('/api/satellite', satelliteRouter);
 
 // GET /api/health
 app.get('/api/health', async (req, res) => {
@@ -80,8 +86,12 @@ async function tick() {
       prediction = await predictFull(buffer);
       latestPrediction = prediction;
 
-      // Save prediction and maybe create alert
-      evaluateAndSaveAlert(prediction);
+      // Save prediction and maybe create alert; broadcast bulletin if one was created
+      const newAlert = evaluateAndSaveAlert(prediction);
+      if (newAlert) {
+        broadcast('bulletin.alert', newAlert);
+        sendBulletin(newAlert).catch(() => {}); // fire-and-forget, never crash tick
+      }
 
       // Broadcast full prediction event
       broadcast('prediction.full', prediction);

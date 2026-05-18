@@ -46,17 +46,26 @@ export function evaluateAndSaveAlert(prediction) {
       (status === 'AMBER' || hasBreaches) ? 'warning' : 'info';
     const parameter = compliance?.breached_parameters?.[0] || compliance?.warning_parameters?.[0] || 'multiple';
 
-    db.prepare(`
+    const message = `Compliance ${status}: ${alert_reason}`;
+    const ins = db.prepare(`
       INSERT INTO alerts (facility_id, timestamp, severity, parameter, message,
         alert_reason, recommended_action, breach_probability, status)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'active')
     `).run(
-      facility_id, timestamp, severity, parameter,
-      `Compliance ${status}: ${alert_reason}`,
+      facility_id, timestamp, severity, parameter, message,
       alert_reason, recommended_action, breach_probability_30min,
     );
+
+    return {
+      id: ins.lastInsertRowid,
+      facility_id, timestamp, severity, parameter, message,
+      alert_reason, recommended_action,
+      breach_probability: breach_probability_30min,
+      status: 'active',
+    };
   }
 
+  return null;
 }
 
 export function getAlerts(facilityId, limit = 50) {

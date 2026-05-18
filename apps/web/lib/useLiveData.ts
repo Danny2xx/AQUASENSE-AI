@@ -49,12 +49,14 @@ export interface SensorReading {
   event_type?: string;
 }
 
-export function useLiveData() {
+export function useLiveData(onBulletin?: (b: any) => void) {
   const [prediction, setPrediction] = useState<LivePrediction | null>(null);
   const [reading, setReading] = useState<SensorReading | null>(null);
   const [history, setHistory] = useState<LivePrediction[]>([]);
   const [connected, setConnected] = useState(false);
   const esRef = useRef<EventSource | null>(null);
+  const onBulletinRef = useRef(onBulletin);
+  onBulletinRef.current = onBulletin;
 
   useEffect(() => {
     let es: EventSource;
@@ -76,6 +78,10 @@ export function useLiveData() {
           setPrediction(data);
           setHistory(prev => [...prev, data].slice(-120));
         } catch {}
+      });
+
+      es.addEventListener('bulletin.alert', (e) => {
+        try { onBulletinRef.current?.(JSON.parse(e.data)); } catch {}
       });
 
       es.onerror = () => {
