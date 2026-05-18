@@ -32,10 +32,27 @@ data/processed/model_calibration_results.csv
 data/processed/model_selection_summary.json
 data/processed/model_card_summary.json
 
+!data/processed/preprocessing_audit.json
+!data/processed/preprocessing_feature_manifest.csv
+!data/processed/preprocessing_train_medians.csv
+!data/processed/temporal_split_summary.csv
+!data/processed/model_classification_results.csv
+!data/processed/model_forecast_results.csv
+!data/processed/model_anomaly_results.csv
+!data/processed/model_feature_importance.csv
+!data/processed/model_walk_forward_results.csv
+!data/processed/model_incident_holdout_results.csv
+!data/processed/model_lead_time_results.csv
+!data/processed/model_calibration_results.csv
+!data/processed/model_selection_summary.json
+!data/processed/model_card_summary.json
+
 notebooks/catboost_info/
 
 services/ml/models/*
 !services/ml/models/.gitkeep
+!services/ml/models/aquasense_best_models.joblib
+!services/ml/models/aquasense_best_models.h5
 
 node_modules/
 .next/

@@ -1,0 +1,2 @@
+services/ml/models/*.joblib filter=lfs diff=lfs merge=lfs -text
+services/ml/models/*.h5 filter=lfs diff=lfs merge=lfs -text

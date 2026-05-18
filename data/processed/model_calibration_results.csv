@@ -1,0 +1,21 @@
+model,split,bin,rows,mean_score,observed_rate,brier_score
+hist_gradient_boosting,validation,"(-0.001, 0.1]",1291,0.00017204322639894124,0.009295120061967466,0.008987824840266582
+hist_gradient_boosting,validation,"(0.1, 0.2]",0,,,0.008987824840266582
+hist_gradient_boosting,validation,"(0.2, 0.3]",0,,,0.008987824840266582
+hist_gradient_boosting,validation,"(0.3, 0.4]",0,,,0.008987824840266582
+hist_gradient_boosting,validation,"(0.4, 0.5]",0,,,0.008987824840266582
+hist_gradient_boosting,validation,"(0.5, 0.6]",0,,,0.008987824840266582
+hist_gradient_boosting,validation,"(0.6, 0.7]",0,,,0.008987824840266582
+hist_gradient_boosting,validation,"(0.7, 0.8]",0,,,0.008987824840266582
+hist_gradient_boosting,validation,"(0.8, 0.9]",0,,,0.008987824840266582
+hist_gradient_boosting,validation,"(0.9, 1.0]",0,,,0.008987824840266582
+hist_gradient_boosting,test,"(-0.001, 0.1]",1291,6.543974182741801e-06,0.0,6.946353706908484e-10
+hist_gradient_boosting,test,"(0.1, 0.2]",0,,,6.946353706908484e-10
+hist_gradient_boosting,test,"(0.2, 0.3]",0,,,6.946353706908484e-10
+hist_gradient_boosting,test,"(0.3, 0.4]",0,,,6.946353706908484e-10
+hist_gradient_boosting,test,"(0.4, 0.5]",0,,,6.946353706908484e-10
+hist_gradient_boosting,test,"(0.5, 0.6]",0,,,6.946353706908484e-10
+hist_gradient_boosting,test,"(0.6, 0.7]",0,,,6.946353706908484e-10
+hist_gradient_boosting,test,"(0.7, 0.8]",0,,,6.946353706908484e-10
+hist_gradient_boosting,test,"(0.8, 0.9]",0,,,6.946353706908484e-10
+hist_gradient_boosting,test,"(0.9, 1.0]",0,,,6.946353706908484e-10
