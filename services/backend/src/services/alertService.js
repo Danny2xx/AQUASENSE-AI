@@ -1,6 +1,6 @@
 import { getDb } from '../db.js';
 
-let lastStatus = 'GREEN';
+let lastAlertAt = { RED: 0, AMBER: 0, WATCH: 0 };
 
 export function evaluateAndSaveAlert(prediction) {
   const db = getDb();
@@ -26,16 +26,24 @@ export function evaluateAndSaveAlert(prediction) {
     alert_reason,
   );
 
-  // Create alert when status worsens or is RED/AMBER
+  const now = Date.now();
+  const COOLDOWN = { RED: 30_000, AMBER: 60_000, WATCH: 120_000 };
+  const cooled = s => (now - (lastAlertAt[s] ?? 0)) > (COOLDOWN[s] ?? 120_000);
+  const hasBreaches = compliance?.breached_parameters?.length > 0;
+
+  // Alert on any non-GREEN status with per-severity cooldown
   const shouldAlert = (
-    (status === 'RED' && lastStatus !== 'RED') ||
-    (status === 'AMBER' && lastStatus === 'GREEN') ||
-    (status === 'WATCH' && lastStatus === 'GREEN') ||
-    compliance?.breached_parameters?.length > 0
+    (status === 'RED'   && cooled('RED'))   ||
+    (status === 'AMBER' && cooled('AMBER')) ||
+    (status === 'WATCH' && cooled('WATCH')) ||
+    hasBreaches
   );
 
   if (shouldAlert) {
-    const severity = status === 'RED' ? 'critical' : status === 'AMBER' ? 'warning' : 'info';
+    if (lastAlertAt[status] !== undefined) lastAlertAt[status] = now;
+    const severity =
+      status === 'RED' ? 'critical' :
+      (status === 'AMBER' || hasBreaches) ? 'warning' : 'info';
     const parameter = compliance?.breached_parameters?.[0] || compliance?.warning_parameters?.[0] || 'multiple';
 
     db.prepare(`
@@ -49,7 +57,6 @@ export function evaluateAndSaveAlert(prediction) {
     );
   }
 
-  lastStatus = status;
 }
 
 export function getAlerts(facilityId, limit = 50) {
@@ -60,7 +67,11 @@ export function getAlerts(facilityId, limit = 50) {
   const { total } = db.prepare(
     'SELECT COUNT(*) as total FROM alerts WHERE facility_id = ?'
   ).get(facilityId);
-  return { alerts, total };
+  const severityRows = db.prepare(
+    "SELECT severity, COUNT(*) as cnt FROM alerts WHERE facility_id = ? AND status = 'active' GROUP BY severity"
+  ).all(facilityId);
+  const activeCounts = Object.fromEntries(severityRows.map(r => [r.severity, r.cnt]));
+  return { alerts, total, activeCounts };
 }
 
 export function getActiveAlerts(facilityId) {

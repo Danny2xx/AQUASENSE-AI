@@ -40,12 +40,14 @@ export default function AlertsPage() {
   const { connected, prediction } = useLiveData();
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [totalAlerts, setTotalAlerts] = useState(0);
+  const [activeCounts, setActiveCounts] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
 
   async function load() {
-    const { alerts: data = [], total = 0 } = await fetchAlerts('demo-food-processing-plant', 100);
+    const { alerts: data = [], total = 0, activeCounts: counts = {} } = await fetchAlerts('demo-food-processing-plant', 100);
     setAlerts(data);
     setTotalAlerts(total);
+    setActiveCounts(counts);
     setLoading(false);
   }
 
@@ -78,11 +80,11 @@ export default function AlertsPage() {
         {/* Summary cards */}
         <div className="grid grid-cols-3 gap-3 mb-6">
           <div className="card text-center">
-            <div className="text-3xl font-bold text-red-400">{active.filter(a => a.severity === 'critical').length}</div>
+            <div className="text-3xl font-bold text-red-400">{activeCounts['critical'] ?? 0}</div>
             <div className="text-xs text-slate-500 uppercase mt-1">Critical Active</div>
           </div>
           <div className="card text-center">
-            <div className="text-3xl font-bold text-yellow-400">{active.filter(a => a.severity === 'warning').length}</div>
+            <div className="text-3xl font-bold text-yellow-400">{activeCounts['warning'] ?? 0}</div>
             <div className="text-xs text-slate-500 uppercase mt-1">Warnings Active</div>
           </div>
           <div className="card text-center">

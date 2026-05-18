@@ -4,7 +4,7 @@ import { getAlerts, getRecentPredictions } from './alertService.js';
 export function generateReport(facilityId) {
   const db = getDb();
   const predictions = getRecentPredictions(facilityId, 200);
-  const alerts = getAlerts(facilityId, 50);
+  const { alerts } = getAlerts(facilityId, 50);
 
   if (predictions.length === 0) {
     return null;
