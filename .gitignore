@@ -17,14 +17,5 @@ node_modules/
 dist/
 build/
 
-data/raw/*
-data/processed/*
-data/simulated/*
-reports/*
-services/ml/models/*
 
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-!data/simulated/.gitkeep
-!reports/.gitkeep
-!services/ml/models/.gitkeep
+

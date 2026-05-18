@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-05-30 23:55:00",
+  "facility_id": "demo-food-processing-plant",
+  "compliance_status": "GREEN",
+  "main_risk_driver": "pH low",
+  "margin_to_limit_pct": 17.2,
+  "recommended_action": "Check acid dosing or chemical spill; neutralise before discharge.",
+  "cod_value_source": "soft_sensor_estimate",
+  "bod_value_source": "soft_sensor_estimate",
+  "tss_value_source": "soft_sensor_estimate",
+  "breach_next_15min": false,
+  "breach_next_30min": false,
+  "breach_next_60min": false,
+  "risk_level": "GREEN"
+}
