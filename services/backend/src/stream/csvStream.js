@@ -6,13 +6,16 @@ import { parse } from 'csv-parse';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CSV_PATH = join(__dirname, '..', '..', '..', '..', 'data', 'processed', 'operational_compliance_dataset.csv');
 
-// Column mapping from dataset names to model-expected names
+// Compliance columns take priority over the raw online-sensor readings.
+// Map these explicitly; raw `ammonia_mg_l` is skipped in SENSOR_COLS so there's no conflict.
 const COL_MAP = {
   tss_mg_l_for_compliance: 'tss_mg_l',
   cod_mg_l_for_compliance: 'cod_mg_l',
   bod_mg_l_for_compliance: 'bod_mg_l',
   ammonia_mg_l_for_compliance: 'ammonia_mg_l',
 };
+
+// Note: estimated_* and lab_* columns are already excluded by the SENSOR_COLS allowlist below.
 
 const SENSOR_COLS = [
   'timestamp', 'facility_id', 'flow_rate_lps', 'temperature_c', 'ph',

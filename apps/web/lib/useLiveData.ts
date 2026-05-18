@@ -57,30 +57,38 @@ export function useLiveData() {
   const esRef = useRef<EventSource | null>(null);
 
   useEffect(() => {
-    const es = new EventSource(SSE_URL);
-    esRef.current = es;
+    let es: EventSource;
+    let retryTimer: ReturnType<typeof setTimeout>;
 
-    es.addEventListener('connected', () => setConnected(true));
+    function connect() {
+      es = new EventSource(SSE_URL);
+      esRef.current = es;
 
-    es.addEventListener('sensor.reading', (e) => {
-      try { setReading(JSON.parse(e.data)); } catch {}
-    });
+      es.addEventListener('connected', () => setConnected(true));
 
-    es.addEventListener('prediction.full', (e) => {
-      try {
-        const data: LivePrediction = JSON.parse(e.data);
-        setPrediction(data);
-        setHistory(prev => {
-          const next = [...prev, data];
-          return next.slice(-120); // keep last 120 predictions (~10 min of 5-sec ticks)
-        });
-      } catch {}
-    });
+      es.addEventListener('sensor.reading', (e) => {
+        try { setReading(JSON.parse(e.data)); } catch {}
+      });
 
-    es.onerror = () => setConnected(false);
-    es.onopen = () => setConnected(true);
+      es.addEventListener('prediction.full', (e) => {
+        try {
+          const data: LivePrediction = JSON.parse(e.data);
+          setPrediction(data);
+          setHistory(prev => [...prev, data].slice(-120));
+        } catch {}
+      });
 
-    return () => es.close();
+      es.onerror = () => {
+        setConnected(false);
+        es.close();
+        retryTimer = setTimeout(connect, 3000);
+      };
+
+      es.onopen = () => setConnected(true);
+    }
+
+    connect();
+    return () => { es?.close(); clearTimeout(retryTimer); };
   }, []);
 
   return { prediction, reading, history, connected };

@@ -4,13 +4,14 @@ interface SensorCardProps {
   label: string;
   value?: number | null;
   unit: string;
-  limit?: number;
+  limit?: number;       // upper limit (or max of range)
+  limitMin?: number;    // lower limit for range-based parameters (e.g. pH)
   limitLabel?: string;
   forecast?: number | null;
   decimals?: number;
 }
 
-export function SensorCard({ label, value, unit, limit, limitLabel, forecast, decimals = 0 }: SensorCardProps) {
+export function SensorCard({ label, value, unit, limit, limitMin, limitLabel, forecast, decimals = 0 }: SensorCardProps) {
   const fmt = (v?: number | null) =>
     v == null ? '—' : v.toFixed(decimals);
 
@@ -19,10 +20,24 @@ export function SensorCard({ label, value, unit, limit, limitLabel, forecast, de
   let pct = 0;
 
   if (value != null && limit != null) {
-    pct = Math.min((value / limit) * 100, 100);
-    if (pct >= 100) { statusColor = 'text-red-400'; barColor = 'bg-red-500'; }
-    else if (pct >= 85) { statusColor = 'text-yellow-400'; barColor = 'bg-yellow-500'; }
-    else { statusColor = 'text-green-400'; barColor = 'bg-green-500'; }
+    if (limitMin != null) {
+      // Range parameter (e.g. pH 6–10): measure distance from nearest boundary
+      const span = limit - limitMin;
+      const marginLo = value - limitMin;
+      const marginHi = limit - value;
+      const minMargin = Math.min(marginLo, marginHi);
+      pct = Math.max(0, Math.min((minMargin / span) * 200, 100)); // 0% = at limit, 100% = dead centre
+      const breached = value < limitMin || value > limit;
+      const warning = minMargin / span < 0.15;
+      if (breached)      { statusColor = 'text-red-400';    barColor = 'bg-red-500'; }
+      else if (warning)  { statusColor = 'text-yellow-400'; barColor = 'bg-yellow-500'; }
+      else               { statusColor = 'text-green-400';  barColor = 'bg-green-500'; }
+    } else {
+      pct = Math.min((value / limit) * 100, 100);
+      if (pct >= 100)    { statusColor = 'text-red-400';    barColor = 'bg-red-500'; }
+      else if (pct >= 85){ statusColor = 'text-yellow-400'; barColor = 'bg-yellow-500'; }
+      else               { statusColor = 'text-green-400';  barColor = 'bg-green-500'; }
+    }
   }
 
   return (
@@ -37,8 +52,8 @@ export function SensorCard({ label, value, unit, limit, limitLabel, forecast, de
             <div className={`h-full rounded-full transition-all duration-500 ${barColor}`} style={{ width: `${pct}%` }} />
           </div>
           <div className="flex justify-between text-xs text-slate-500 mt-1">
-            <span>0</span>
-            <span>{limitLabel ?? `Limit: ${limit} ${unit}`}</span>
+            <span>{limitMin ?? 0}</span>
+            <span>{limitLabel ?? `Limit: ${limit}${unit ? ' ' + unit : ''}`}</span>
           </div>
         </>
       )}

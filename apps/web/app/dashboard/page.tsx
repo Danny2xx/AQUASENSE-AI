@@ -79,8 +79,8 @@ export default function DashboardPage() {
 
         {/* Sensor KPIs */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
-          <SensorCard label="pH" value={reading?.ph} unit="" limit={10} limitLabel="6.0–10.0"
-            forecast={prediction?.forecasts_30min?.ph} decimals={2} />
+          <SensorCard label="pH" value={reading?.ph} unit="" limit={10} limitMin={6}
+            limitLabel="6.0–10.0" forecast={prediction?.forecasts_30min?.ph} decimals={2} />
           <SensorCard label="COD" value={reading?.cod_mg_l} unit="mg/L" limit={1500}
             forecast={prediction?.forecasts_30min?.cod_mg_l} />
           <SensorCard label="TSS" value={reading?.tss_mg_l} unit="mg/L" limit={800}

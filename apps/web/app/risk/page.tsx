@@ -28,7 +28,7 @@ function GaugeBar({ pct, label }: { pct: number; label: string }) {
 }
 
 export default function RiskPage() {
-  const { prediction, history, connected } = useLiveData();
+  const { prediction, connected } = useLiveData();
   const [riskHistory, setRiskHistory] = useState<RiskPoint[]>([]);
 
   useEffect(() => {
