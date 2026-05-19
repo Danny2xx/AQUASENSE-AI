@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Dark theme (default) ─────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --aqua-sidebar-width: 16rem;
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --border: #334155;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --nav-bg: rgba(15, 23, 42, 0.95);
+  --nav-border: #334155;
+  --input-bg: #1e293b;
+  --hover-bg: rgba(30, 41, 59, 0.6);
+  --subtle-bg: rgba(30, 41, 59, 0.5);
+  --divider: #1e293b;
+  --slate-text-6: #475569;
+  --slate-text-5: #64748b;
+  --slate-text-4: #94a3b8;
+  --slate-text-3: #cbd5e1;
+  --slate-text-2: #e2e8f0;
+  --slate-bg-8: #1e293b;
+  --slate-bg-7: #334155;
+}
+
+/* ── Light theme ───────────────────────────────────────── */
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --nav-bg: rgba(255, 255, 255, 0.97);
+  --nav-border: #e2e8f0;
+  --input-bg: #f1f5f9;
+  --hover-bg: rgba(241, 245, 249, 0.8);
+  --subtle-bg: rgba(241, 245, 249, 0.6);
+  --divider: #e2e8f0;
+  --slate-text-6: #475569;
+  --slate-text-5: #64748b;
+  --slate-text-4: #475569;
+  --slate-text-3: #334155;
+  --slate-text-2: #1e293b;
+  --slate-bg-8: #f1f5f9;
+  --slate-bg-7: #e2e8f0;
+}
+
+[data-sidebar-collapsed="true"] {
+  --aqua-sidebar-width: 4.75rem;
+}
+
+/* ── Base ──────────────────────────────────────────────── */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* ── Status / Badge colours (unchanged for both themes) ── */
+.status-green  { color: #22c55e; }
+.status-watch  { color: #3b82f6; }
+.status-amber  { color: #f59e0b; }
+.status-red    { color: #ef4444; }
+
+.badge-green  { background: #14532d; color: #4ade80; }
+.badge-watch  { background: #1e3a8a; color: #93c5fd; }
+.badge-amber  { background: #78350f; color: #fcd34d; }
+.badge-red    { background: #7f1d1d; color: #fca5a5; }
+.badge-gray   { background: var(--surface); color: var(--muted); }
+
+/* ── Nav ───────────────────────────────────────────────── */
+nav.aqua-nav {
+  background-color: var(--nav-bg) !important;
+  border-color: var(--nav-border) !important;
+}
+
+.aqua-mobile-menu {
+  background-color: var(--nav-bg) !important;
+  border-color: var(--nav-border) !important;
+}
+
+@media (min-width: 768px) {
+  body:has(nav.aqua-nav) main {
+    margin-top: 0 !important;
+    margin-left: var(--aqua-sidebar-width) !important;
+    margin-right: auto !important;
+    padding-top: 1.5rem !important;
+    transition: margin-left 0.2s ease, width 0.2s ease;
+  }
+}
+
+@media (max-width: 767px) {
+  body:has(nav.aqua-nav) main {
+    margin-top: 0 !important;
+    padding-top: 4.75rem !important;
+  }
+}
+
+.theme-toggle-btn {
+  color: var(--muted);
+  background: transparent;
+}
+.theme-toggle-btn:hover {
+  background-color: var(--hover-bg);
+  color: var(--text);
+}
+
+/* ── Light-mode overrides for hardcoded Tailwind classes ── */
+
+/* ── Slate text scale
+   In dark mode these go light→lighter; in light mode they go dark→lighter-dark.
+   slate-100  prominent headings
+   slate-200  primary content text
+   slate-300  secondary content text
+   slate-400  caption / label text
+   slate-500  muted / helper text
+   slate-600  very muted ──────────────────────────────── */
+[data-theme="light"] .text-slate-100 { color: #0f172a; }
+[data-theme="light"] .text-slate-200 { color: #1e293b; }
+[data-theme="light"] .text-slate-300 { color: #334155; }
+[data-theme="light"] .text-slate-400 { color: #475569; }
+[data-theme="light"] .text-slate-500 { color: #64748b; }
+[data-theme="light"] .text-slate-600 { color: #64748b; }
+
+/* ── Blue text — light blues have poor contrast on white ── */
+[data-theme="light"] .text-blue-400  { color: #2563eb; }
+[data-theme="light"] .text-blue-300  { color: #1d4ed8; }
+[data-theme="light"] .text-blue-200  { color: #1d4ed8; }
+
+/* ── Hover text override ─────────────────────────────── */
+[data-theme="light"] .hover\:text-slate-200:hover { color: #0f172a; }
+
+/* ── Backgrounds ─────────────────────────────────────── */
+[data-theme="light"] .bg-slate-900     { background-color: var(--bg); }
+[data-theme="light"] .bg-slate-800     { background-color: #f1f5f9; }
+[data-theme="light"] .bg-slate-700     { background-color: #e2e8f0; }
+[data-theme="light"] .bg-slate-600     { background-color: #cbd5e1; }
+
+/* Opacity-variant bg classes (table rows, subtle fills) */
+[data-theme="light"] .bg-slate-800\/50 { background-color: rgba(241, 245, 249, 0.7); }
+[data-theme="light"] .bg-slate-800\/30 { background-color: rgba(241, 245, 249, 0.5); }
+[data-theme="light"] .bg-slate-900\/95 { background-color: rgba(248, 250, 252, 0.97); }
+
+/* ── Borders ─────────────────────────────────────────── */
+[data-theme="light"] .border-slate-700 { border-color: #cbd5e1; }
+[data-theme="light"] .border-slate-800 { border-color: #e2e8f0; }
+[data-theme="light"] .border-blue-800  { border-color: #bfdbfe; }
+
+/* Dividers (table row separators) */
+[data-theme="light"] .divide-slate-800 > * + * { border-color: #e2e8f0; }
+
+/* ── Hover backgrounds ───────────────────────────────── */
+[data-theme="light"] .hover\:bg-slate-800:hover { background-color: #f1f5f9; }
+[data-theme="light"] .hover\:bg-slate-600:hover  { background-color: #cbd5e1; }
+
+/* ── Recharts charts ─────────────────────────────────── */
+[data-theme="light"] .recharts-cartesian-grid line { stroke: #e2e8f0; }
+[data-theme="light"] .recharts-cartesian-axis-tick text { fill: #64748b; }
+/* Tooltip card (bg-slate-800 is already remapped above; text inherits body) */
+
+/* ── Nav links in inactive state ─────────────────────── */
+[data-theme="light"] nav a.text-slate-400 { color: #475569; }
+[data-theme="light"] nav a:hover.text-slate-400,
+[data-theme="light"] nav a.hover\:text-slate-200:hover { color: #0f172a; }
+
+/* ── Pre / report text ───────────────────────────────── */
+[data-theme="light"] pre { color: #1e293b; }
+
+/* ── Drought page ────────────────────────────────────── */
+[data-theme="light"] .bg-slate-950 { background-color: var(--bg); }
+
+/* ── Leaflet map light mode ──────────────────────────── */
+[data-theme="light"] .leaflet-container { background: #e8f4f8; }
