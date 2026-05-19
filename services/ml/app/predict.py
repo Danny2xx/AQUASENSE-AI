@@ -9,6 +9,22 @@ from .feature_pipeline import build_feature_row, check_sufficient_history
 from .rules import check_compliance, rule_sensor_quality, get_recommended_action
 
 _MODEL_PATH = Path(__file__).parent.parent / "models/aquasense_best_models.joblib"
+_HF_REPO = "tejiri-code/aquasense-models"
+_HF_FILENAME = "aquasense_best_models.joblib"
+
+
+def _ensure_model_downloaded() -> None:
+    if _MODEL_PATH.exists() and _MODEL_PATH.stat().st_size > 1_000_000:
+        return
+    print(f"Model not found locally — downloading from HuggingFace ({_HF_REPO})...")
+    from huggingface_hub import hf_hub_download
+    _MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+    downloaded = hf_hub_download(
+        repo_id=_HF_REPO,
+        filename=_HF_FILENAME,
+        local_dir=str(_MODEL_PATH.parent),
+    )
+    print(f"  Downloaded to {downloaded}")
 _MEDIANS_PATH = Path(__file__).parent.parent.parent.parent / "data/processed/preprocessing_train_medians.csv"
 _SELECTION_PATH = Path(__file__).parent.parent.parent.parent / "data/processed/model_selection_summary.json"
 _LIMITS_PATH = Path(__file__).parent.parent.parent.parent / "packages/shared/config/demo_limits.json"
@@ -22,6 +38,7 @@ _selection_summary: dict = {}
 def load_artifacts():
     global _bundle, _train_medians, _demo_limits, _selection_summary
 
+    _ensure_model_downloaded()
     print("Loading model bundle...")
     _bundle = joblib.load(_MODEL_PATH)
     print(f"  classifier: {_bundle['metadata']['best_classifier_name']}")

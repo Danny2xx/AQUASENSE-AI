@@ -185,7 +185,7 @@ export default function DroughtPage() {
             <h1 className="text-2xl font-bold text-slate-100">Drought &amp; Groundwater Stress</h1>
             <div className="flex items-center gap-1.5 text-slate-400 text-sm mt-1">
               <MapPin size={13} />
-              <span>UK Regional Comparison · Facility: Birmingham, UK</span>
+              <span>UK Regional Comparison{focus ? ` · Facility: ${focus.name}, UK` : ''}</span>
               {regional && (
                 <span className="text-slate-600 ml-2">
                   · Updated {new Date(regional.fetchedAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}

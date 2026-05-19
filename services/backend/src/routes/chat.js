@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { hf, CHAT_MODEL, buildSystemPrompt } from '../services/chatService.js';
+import { hf, CHAT_MODEL, buildLocalChatResponse, buildSystemPrompt } from '../services/chatService.js';
 
 const router = Router();
 
@@ -8,10 +8,6 @@ router.post('/', async (req, res) => {
   const { message, history = [] } = req.body;
   if (!message?.trim()) return res.status(400).json({ error: 'message required' });
 
-  if (!process.env.HF_TOKEN) {
-    return res.status(503).json({ error: 'HF_TOKEN not configured in .env' });
-  }
-
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
@@ -19,6 +15,14 @@ router.post('/', async (req, res) => {
   res.flushHeaders();
 
   try {
+    if (!process.env.HF_TOKEN) {
+      const answer = buildLocalChatResponse(message.trim(), 'demo-food-processing-plant');
+      res.write(`data: ${JSON.stringify({ token: answer })}\n\n`);
+      res.write('data: [DONE]\n\n');
+      res.end();
+      return;
+    }
+
     const system = buildSystemPrompt('demo-food-processing-plant');
 
     const messages = [
@@ -41,7 +45,9 @@ router.post('/', async (req, res) => {
     res.write('data: [DONE]\n\n');
   } catch (e) {
     console.error('[chat]', e.message);
-    res.write(`data: ${JSON.stringify({ error: e.message })}\n\n`);
+    const answer = buildLocalChatResponse(message.trim(), 'demo-food-processing-plant');
+    res.write(`data: ${JSON.stringify({ token: `The hosted chat model is unavailable, so I am using the local AquaSense responder.\n\n${answer}` })}\n\n`);
+    res.write('data: [DONE]\n\n');
   }
 
   res.end();

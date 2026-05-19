@@ -89,3 +89,111 @@ ${alertStr}` : '\n[No prediction data available yet — system initialising]';
 
   return SYSTEM_BASE + liveBlock;
 }
+
+function fmtPct(value) {
+  return `${(((value ?? 0) * 100)).toFixed(1)}%`;
+}
+
+function fmtForecast(value, decimals = 0, unit = 'mg/L') {
+  if (value == null) return 'N/A';
+  return `${Number(value).toFixed(decimals)}${unit ? ` ${unit}` : ''}`;
+}
+
+function statusAdvice(status) {
+  switch (status) {
+    case 'GREEN':
+      return 'Current readings are within expected compliance limits. Continue routine monitoring.';
+    case 'WATCH':
+      return 'A sensor anomaly or unusual pattern has been detected. Verify sensor health and monitor the affected stream closely.';
+    case 'AMBER':
+      return 'There is elevated breach risk or a parameter is approaching its limit. Prepare corrective action and check the likely driver.';
+    case 'RED':
+      return 'There is an active compliance breach. Operators should intervene immediately and document the response.';
+    default:
+      return 'The system is still initialising or waiting for a fresh prediction.';
+  }
+}
+
+export function buildLocalChatResponse(message, facilityId = 'demo-food-processing-plant') {
+  const db = getDb();
+  const text = message.toLowerCase();
+
+  const latest = db.prepare(
+    'SELECT * FROM predictions WHERE facility_id = ? ORDER BY created_at DESC LIMIT 1'
+  ).get(facilityId);
+
+  const activeAlerts = db.prepare(
+    "SELECT severity, parameter, message, recommended_action, timestamp FROM alerts WHERE facility_id = ? AND status = 'active' ORDER BY created_at DESC LIMIT 5"
+  ).all(facilityId);
+
+  if (!latest) {
+    return [
+      'I do not have live prediction data yet.',
+      '',
+      'Start the ML service and backend sensor replay, then ask again once the first prediction has been generated.',
+    ].join('\n');
+  }
+
+  const status = latest.status || 'UNKNOWN';
+  const alertCount = activeAlerts.length;
+  const alertSummary = alertCount
+    ? activeAlerts.map(a => `- **${a.severity.toUpperCase()}** ${a.parameter || 'multiple'}: ${a.message}${a.recommended_action ? ` Action: ${a.recommended_action}` : ''}`).join('\n')
+    : '- No active alerts.';
+
+  if (text.includes('alert')) {
+    return [
+      `There ${alertCount === 1 ? 'is' : 'are'} **${alertCount} active alert${alertCount === 1 ? '' : 's'}** for the demo facility.`,
+      '',
+      alertSummary,
+      '',
+      `Current status: **${status}**. ${statusAdvice(status)}`,
+    ].join('\n');
+  }
+
+  if (text.includes('cod')) {
+    return [
+      `Current COD forecast is **${fmtForecast(latest.cod_forecast)}**.`,
+      '',
+      `Overall status is **${status}** with a 30-minute breach probability of **${fmtPct(latest.breach_probability_30min)}**.`,
+      '',
+      'If COD is elevated, check organic load at source, aeration, and retention time.',
+    ].join('\n');
+  }
+
+  if (text.includes('amber') || text.includes('watch') || text.includes('red') || text.includes('green')) {
+    return [
+      `The current compliance status is **${status}**.`,
+      '',
+      statusAdvice(status),
+      '',
+      `Breach probability over the next 30 minutes: **${fmtPct(latest.breach_probability_30min)}**.`,
+      latest.alert_reason ? `Reason: ${latest.alert_reason}` : 'No alert reason is currently recorded.',
+    ].join('\n');
+  }
+
+  if (text.includes('sensor') || text.includes('reading') || text.includes('forecast')) {
+    return [
+      `Latest forecast snapshot for **${facilityId}** at ${latest.timestamp}:`,
+      '',
+      `- Status: **${status}**`,
+      `- Breach probability: **${fmtPct(latest.breach_probability_30min)}**`,
+      `- COD: **${fmtForecast(latest.cod_forecast)}**`,
+      `- BOD: **${fmtForecast(latest.bod_forecast)}**`,
+      `- TSS: **${fmtForecast(latest.tss_forecast)}**`,
+      `- Ammonia: **${fmtForecast(latest.ammonia_forecast, 1)}**`,
+      `- pH: **${fmtForecast(latest.ph_forecast, 2, '')}**`,
+      `- Anomaly: **${latest.anomaly_flag ? 'Yes' : 'No'}**${latest.anomaly_reason ? ` — ${latest.anomaly_reason}` : ''}`,
+    ].join('\n');
+  }
+
+  return [
+    `Current compliance status is **${status}**.`,
+    '',
+    `30-minute breach probability: **${fmtPct(latest.breach_probability_30min)}**.`,
+    latest.alert_reason ? `Reason: ${latest.alert_reason}` : statusAdvice(status),
+    '',
+    `Active alerts: **${alertCount}**.`,
+    '',
+    'Note: HF_TOKEN is not configured, so I am using the local AquaSense status responder instead of the hosted chat model.',
+  ].join('\n');
+}
